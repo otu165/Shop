@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main"
+        android:icon="@drawable/ic_baseline_topic_24"
+        android:title="메인" />
+
+    <item
+        android:id="@+id/recommend"
+        android:icon="@drawable/ic_baseline_thumb_up_alt_24"
+        android:title="추천"/>
+
+    <item
+        android:id="@+id/bookmark"
+        android:icon="@drawable/navigation_bar_selecter"
+        android:title="즐겨찾기"/>
+
+    <item
+        android:id="@+id/mypage"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="마이페이지"/>
+
+</menu>
