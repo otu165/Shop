@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         viewPagerMain.adapter = viewPagerAdapter
 
         // 2. GridView
-        // TODO 충분한 높이를 지정해주지 않으면 전체가 출력되지 않는 문제 해결必
+        // ERROR 충분한 높이를 지정해주지 않으면 전체가 출력되지 않는 문제
         val gridViewAdapter = MainGridViewAdapter(this)
         gridViewMain.adapter = gridViewAdapter
 
