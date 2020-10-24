@@ -1,9 +1,11 @@
 package com.example.shopping.api
 
+import android.util.Log
 import com.example.shopping.R
 import com.example.shopping.data.main.MainGridViewData
 import com.example.shopping.data.menu.MenuFragListViewData
 import com.example.shopping.data.menu.MenuTabLayoutData
+import java.util.*
 
 // TODO 서버에서 받아오는 데이터로 변환
 object Service {
@@ -32,6 +34,7 @@ object Service {
     }
 
     fun getMenuTabData() : List<MenuTabLayoutData> {
+        // ERROR selecter 동작하지 않음
         return listOf(
                 MenuTabLayoutData(R.drawable.menu_tab_outer_selecter, "아우터"),
                 MenuTabLayoutData(R.drawable.menu_tab_top_selecter, "상의"),
@@ -43,20 +46,47 @@ object Service {
                 )
     }
 
-    fun getMenuFragListViewOuterData() : List<MenuFragListViewData> {
-        return listOf(
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터1", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터2", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터3", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터4", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터5", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터6", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터7", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터8", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터9", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터10", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터11", 100.toString() + "원"),
-            MenuFragListViewData(R.drawable.ic_baseline_filter_1_24, "아우터12", 100.toString() + "원"),
-        )
+    fun getMenuFragListViewData(sort : String) : List<MenuFragListViewData> {
+        var list = mutableListOf<MenuFragListViewData>()
+
+        when(sort) {
+            "아우터" -> {
+                for (i in 0..9) {
+                    list.add(MenuFragListViewData(R.drawable.jacket, "${sort}$i", (100 + i).toString() + "원"))
+                }
+            }
+            "상의" -> {
+                for (i in 0..13) {
+                    list.add(MenuFragListViewData(R.drawable.top, "${sort}$i", (200 + i).toString() + "원"))
+                }
+            }
+            "원피스/세트" -> {
+                for (i in 0..18) {
+                    list.add(MenuFragListViewData(R.drawable.dress, "${sort}$i", (300 + i).toString() + "원"))
+                }
+            }
+            "바지" -> {
+                for (i in 0..3) {
+                    list.add(MenuFragListViewData(R.drawable.jeans, "${sort}$i", (400 + i).toString() + "원"))
+                }
+            }
+            "스커트" -> {
+                for (i in 0..20) {
+                    list.add(MenuFragListViewData(R.drawable.skirt_list, "${sort}$i", (500 + i).toString() + "원"))
+                }
+            }
+            "슈즈" -> {
+                for (i in 0..5) {
+                    list.add(MenuFragListViewData(R.drawable.shoes, "${sort}$i", (600 + i).toString() + "원"))
+                }
+            }
+            else -> { // 가방
+                for (i in 0..5) {
+                    list.add(MenuFragListViewData(R.drawable.bag, "${sort}$i", (700 + i).toString() + "원"))
+                }
+            }
+        }
+
+        return list
     }
 }

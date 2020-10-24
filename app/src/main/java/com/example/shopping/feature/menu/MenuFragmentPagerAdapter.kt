@@ -1,6 +1,7 @@
 package com.example.shopping.feature.menu
 
 import android.content.Context
+import android.os.Bundle
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -16,25 +17,53 @@ class MenuFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPager
     override fun getItem(position: Int): Fragment {
         return when(position) {
             0 -> {
-                MenuOuterFragment()
+                MenuOuterFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "아우터")
+                    }
+                }
             }
             1 -> {
-                MenuTopFragment()
+                MenuTopFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "상의")
+                    }
+                }
             }
             2 -> {
-                MenuDressFragment()
+                MenuDressFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "원피스/세트")
+                    }
+                }
             }
             3 -> {
-                MenuJeansFragment()
+                MenuJeansFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "바지")
+                    }
+                }
             }
             4 -> {
-                MenuSkirtFragment()
+                MenuSkirtFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "스커트")
+                    }
+                }
             }
             5 -> {
-                MenuShoesFragment()
+                MenuShoesFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "슈즈")
+                    }
+                }
             }
             else -> {
-                MenuBagFragment()
+                MenuBagFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("KEY", "가방")
+                    }
+                }
             }
         }
     }

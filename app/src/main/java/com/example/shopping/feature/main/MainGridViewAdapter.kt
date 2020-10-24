@@ -28,8 +28,6 @@ class MainGridViewAdapter(private val context : Context) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        Log.d("TAG", "getView() 메서드 호출" )
-
         val view = LayoutInflater.from(context).inflate(R.layout.item_main_grid_view, parent, false)
 
         // compose item view

@@ -16,7 +16,6 @@ class MenuOuterFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val view : View =  inflater.inflate(R.layout.fragment_menu_outer, container, false)
-
         menuOuterFunction(view)
 
         Log.d(TAG, "${TAG} created")
@@ -24,8 +23,9 @@ class MenuOuterFragment : Fragment() {
     }
 
     private fun menuOuterFunction(view : View) {
+
         // 1. ListView
-        val listViewAdapter = MenuFragListViewAdapter(requireContext())
+        val listViewAdapter = MenuFragListViewAdapter(requireContext(), arguments?.getString("KEY")!!)
         view.lvMenuOuterFrag.adapter = listViewAdapter
     }
 
