@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         viewPagerMain.adapter = viewPagerAdapter
 
         // 2. GridView
+        // TODO 높이를 지정해주지 않으면 짤려서 출력되는 문제 있음
         val gridViewAdapter = MainGridViewAdapter(this)
         gridViewMain.adapter = gridViewAdapter
     }

@@ -1,6 +1,7 @@
 package com.example.shopping.feature.main
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,9 @@ class MainGridViewAdapter(private val context : Context) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_main_grid_view, null)
+        Log.d("TAG", "getView() 메서드 호출" )
+
+        val view = LayoutInflater.from(context).inflate(R.layout.item_main_grid_view, parent, false)
 
         // compose item view
         view.imgItemMainGridView.setImageResource(data[position].resource)
@@ -44,6 +47,10 @@ class MainGridViewAdapter(private val context : Context) : BaseAdapter() {
         view.txtItemMainGridViewCost.setText(data[position].cost.toString() + "원")
 
         return view
+    }
+
+    companion object {
+        private const val TAG = "MainGridViewAdapter"
     }
 
 }
