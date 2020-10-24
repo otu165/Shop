@@ -6,13 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.shopping.feature.menu.fragment.MenuDressFragment
-import com.example.shopping.feature.menu.fragment.MenuOuterFragment
-import com.example.shopping.feature.menu.fragment.MenuTopFragment
+import com.example.shopping.feature.menu.fragment.*
 
 class MenuFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     override fun getCount(): Int {
-        return 3
+        return 7
     }
 
     override fun getItem(position: Int): Fragment {
@@ -23,8 +21,20 @@ class MenuFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPager
             1 -> {
                 MenuTopFragment()
             }
-            else -> {
+            2 -> {
                 MenuDressFragment()
+            }
+            3 -> {
+                MenuJeansFragment()
+            }
+            4 -> {
+                MenuSkirtFragment()
+            }
+            5 -> {
+                MenuShoesFragment()
+            }
+            else -> {
+                MenuBagFragment()
             }
         }
     }
