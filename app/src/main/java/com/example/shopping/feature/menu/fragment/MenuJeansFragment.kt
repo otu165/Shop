@@ -7,14 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.shopping.R
+import kotlinx.android.synthetic.main.fragment_menu_dress.*
+import kotlinx.android.synthetic.main.fragment_menu_jeans.*
+import kotlinx.android.synthetic.main.fragment_menu_jeans.view.*
 
 class MenuJeansFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
+        val view : View = inflater.inflate(R.layout.fragment_menu_jeans, container, false)
+
+        menuJeansFunction(view)
+
         Log.d(TAG, "${TAG} created")
-        return inflater.inflate(R.layout.fragment_menu_jeans, container, false)
+        return view
+    }
+
+    private fun menuJeansFunction(view : View) {
+        // 1. ListView
+        val listAdapter = MenuFragListViewAdapter(requireContext(), arguments?.getString("KEY")!!)
+        view.lvMenuJeansFrag.adapter = listAdapter
     }
 
     companion object {

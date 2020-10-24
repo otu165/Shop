@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".feature.menu.fragment.MenuJeansFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/lvMenuJeansFrag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="바지" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="?attr/actionBarSize"/>
 
 </FrameLayout>

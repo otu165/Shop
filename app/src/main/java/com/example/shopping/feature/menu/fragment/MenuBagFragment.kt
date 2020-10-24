@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.shopping.R
+import kotlinx.android.synthetic.main.fragment_menu_bag.*
+import kotlinx.android.synthetic.main.fragment_menu_bag.view.*
+import kotlinx.android.synthetic.main.fragment_menu_dress.*
 
 class MenuBagFragment : Fragment() {
 
@@ -14,9 +17,18 @@ class MenuBagFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        val view : View = inflater.inflate(R.layout.fragment_menu_bag, container, false)
+
+        menuBagFunction(view)
+
         Log.d(TAG, "${TAG} created")
-        return inflater.inflate(R.layout.fragment_menu_bag, container, false)
+        return view;
+    }
+
+    private fun menuBagFunction(view: View) {
+        // 1. ListView
+        val listAdapter = MenuFragListViewAdapter(requireContext(), arguments?.getString("KEY")!!)
+        view.lvMenuBagFrag.adapter = listAdapter
     }
 
     companion object {
