@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.shopping.R
+import com.example.shopping.api.Service
+import com.example.shopping.data.menu.MenuTabLayoutData
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_menu.*
 
@@ -22,14 +24,10 @@ class MenuActivity : AppCompatActivity() {
 
     private fun menuFunction() {
         // 1. TabLayout
-        // TODO 서버에 데이터 저장 후 반복문으로 해결
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("아우터")))
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("상의")))
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("원피스/세트")))
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("바지")))
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("스커트")))
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("슈즈")))
-        tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView("가방")))
+        // ERROR 너비 줄여야 함
+        for (list in Service.getMenuTabData()) {
+            tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView(list)))
+        }
 
         tabLayoutMenu.addOnTabSelectedListener(
                 object : TabLayout.OnTabSelectedListener {
@@ -55,11 +53,11 @@ class MenuActivity : AppCompatActivity() {
     }
 
     // compose Tab Item
-    private fun getTabView(element : String) : View {
+    private fun getTabView(data : MenuTabLayoutData) : View {
         val view : View = LayoutInflater.from(this).inflate(R.layout.item_tab_layout_menu, null)
 
-        view.findViewById<ImageView>(R.id.imgItemTab).setImageResource(R.drawable.ic_baseline_crop_original_24)
-        view.findViewById<TextView>(R.id.txtItemTab).text = element
+        view.findViewById<ImageView>(R.id.imgItemTab).setImageResource(data.imageResource)
+        view.findViewById<TextView>(R.id.txtItemTab).text = data.sort
 
         return view;
     }

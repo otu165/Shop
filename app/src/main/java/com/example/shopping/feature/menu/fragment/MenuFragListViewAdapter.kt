@@ -11,7 +11,7 @@ import com.example.shopping.R
 import com.example.shopping.api.Service
 
 class MenuFragListViewAdapter(private val context : Context) : BaseAdapter() {
-    var data = Service.getMenuFragListViewData()
+    private var data = Service.getMenuFragListViewOuterData()
 
     override fun getCount(): Int {
         return data.size

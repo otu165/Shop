@@ -8,16 +8,12 @@ import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.shopping.R
+import com.example.shopping.api.Service
 
 class MainViewPagerAdapter(private val context : Context) : PagerAdapter() {
 
     // TODO 서버에서 받아오는 데이터로 변경
-    val image = listOf(
-        R.drawable.abstract_101,
-        R.drawable.abstract_102,
-        R.drawable.abstract_103,
-        R.drawable.abstract_104,
-        )
+    private val image = Service.getMainViewPagerData()
 
     override fun getCount(): Int {
         return image.size

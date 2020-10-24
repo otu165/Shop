@@ -13,7 +13,7 @@ import com.example.shopping.data.main.MainGridViewData
 import kotlinx.android.synthetic.main.item_main_grid_view.view.*
 
 class MainGridViewAdapter(private val context : Context) : BaseAdapter() {
-    val data = Service.getMainGridViewData()
+    private val data = Service.getMainGridViewData()
 
     override fun getCount(): Int {
         return data.size
@@ -35,7 +35,6 @@ class MainGridViewAdapter(private val context : Context) : BaseAdapter() {
         // compose item view
         view.imgItemMainGridView.setImageResource(data[position].resource)
         view.txtItemMainGridViewName.setText(data[position].name)
-        view.txtItemMainGridViewCost.setText(data[position].cost.toString() + "원")
 
         return view
     }
