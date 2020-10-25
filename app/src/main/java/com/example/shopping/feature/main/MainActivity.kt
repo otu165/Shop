@@ -4,11 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.data.main.MainGridViewData
 import com.example.shopping.feature.menu.MenuActivity
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottom_navigation_bar_main.*
 
 class MainActivity : AppCompatActivity() {
     private var backKeyPressed : Long = 0
@@ -38,6 +43,36 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        // BottomNavigationBar
+        bottomNavi.setOnNavigationItemSelectedListener(
+            object : BottomNavigationView.OnNavigationItemSelectedListener {
+                override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+                    when(item.itemId) {
+                        R.id.main -> {
+
+                        }
+                        R.id.recommend -> {
+
+                        }
+                        R.id.bookmark -> {
+
+                        }
+                        else -> {
+
+                        }
+                    }
+
+                    if (item.title.toString() == "추천") {
+                        Toast.makeText(this@MainActivity, "추천!", Toast.LENGTH_SHORT).show()
+                    }
+
+                    return item.isChecked
+                }
+
+            }
+        )
     }
 
     override fun onBackPressed() {
