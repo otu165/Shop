@@ -9,7 +9,6 @@ import java.util.*
 
 // TODO 서버에서 받아오는 데이터로 변환
 object Service {
-    
     // ERROR 해상도 깨짐, 큰 사이즈의 이미지로 교체
     fun getMainViewPagerData() : List<Int> {
         return listOf(
@@ -87,5 +86,14 @@ object Service {
         }
 
         return list
+    }
+
+    fun getStoreVpData() : List<Int> {
+        return listOf(
+                R.drawable.jacket,
+                R.drawable.jacket_b,
+                R.drawable.jacket_m,
+                R.drawable.jecket_c
+                )
     }
 }
