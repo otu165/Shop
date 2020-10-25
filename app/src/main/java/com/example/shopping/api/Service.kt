@@ -34,7 +34,6 @@ object Service {
     }
 
     fun getMenuTabData() : List<MenuTabLayoutData> {
-        // ERROR selecter 동작하지 않음
         return listOf(
                 MenuTabLayoutData(R.drawable.menu_tab_outer_selecter, "아우터"),
                 MenuTabLayoutData(R.drawable.menu_tab_top_selecter, "상의"),

@@ -1,5 +1,6 @@
 package com.example.shopping.feature.menu.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.shopping.R
+import com.example.shopping.feature.store.StoreActivity
 import kotlinx.android.synthetic.main.fragment_menu_outer.*
 import kotlinx.android.synthetic.main.fragment_menu_outer.view.*
 
@@ -27,6 +29,11 @@ class MenuOuterFragment : Fragment() {
         // 1. ListView
         val listViewAdapter = MenuFragListViewAdapter(requireContext(), arguments?.getString("KEY")!!)
         view.lvMenuOuterFrag.adapter = listViewAdapter
+
+        view.lvMenuOuterFrag.setOnItemClickListener { adapterView, view, i, l ->
+            val intent = Intent(requireContext(), StoreActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {
