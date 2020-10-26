@@ -96,4 +96,20 @@ object Service {
                 R.drawable.jecket_c
                 )
     }
+
+    fun getRecVpData() : List<Int> {
+        return listOf(
+            R.drawable.jacket_m,
+            R.drawable.jecket_c,
+            R.drawable.jacket
+        )
+    }
+
+    fun getRecRvData() : List<String> {
+        return listOf(
+            "아우터",
+            "상의",
+            "바지"
+        )
+    }
 }

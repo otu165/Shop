@@ -12,6 +12,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.shopping.R
+import com.example.shopping.api.FirebaseService
+import com.example.shopping.api.FirebaseService.auth
 import com.example.shopping.feature.main.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -47,7 +49,19 @@ class SignInFragment : Fragment() {
         btnSignIn.setOnClickListener {
             if(isValid(edtEmail.text.toString(), edtPwd.text.toString())) {
                 // TODO 데이터베이스 연동
-                Toast.makeText(requireContext(), "로그인 요청 가능", Toast.LENGTH_SHORT).show()
+                auth.signInWithEmailAndPassword(edtEmail.text.toString(), edtPwd.text.toString())
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if(task.isSuccessful) {
+                            // 로그인 성공
+                            val user = auth.currentUser
+                            Toast.makeText(requireContext(), "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                            (activity as MainActivity).replaceFragment(MyPageFragment())
+                        }
+                        else {
+                            // 로그인 실패
+                            Toast.makeText(requireContext(), "아이디 또는 비밀번호가 틀립니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
             else {
                 Toast.makeText(requireContext(), "모든 항목을 입력하세요.", Toast.LENGTH_SHORT).show()

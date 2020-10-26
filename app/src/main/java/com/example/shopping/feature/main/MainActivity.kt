@@ -7,10 +7,14 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.shopping.R
+import com.example.shopping.api.FirebaseService
 import com.example.shopping.feature.bookmark.BookmarkFragment
+import com.example.shopping.feature.login.MyPageFragment
 import com.example.shopping.feature.login.SignInFragment
 import com.example.shopping.feature.recommend.RecommendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.bottom_navigation_bar_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mainFunction() {
+        // initiate Firebase
+        FirebaseService.auth = Firebase.auth
+
         // add MainFragment
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.frameMain, MainFragment()).commit()
@@ -37,24 +44,37 @@ class MainActivity : AppCompatActivity() {
 
                     when(item.itemId) {
                         R.id.main -> {
-                            transaction.replace(R.id.frameMain, MainFragment())
+                            transaction.replace(R.id.frameMain, MainFragment()).commit()
+                            return true
                         }
                         R.id.recommend -> {
-                            transaction.replace(R.id.frameMain, RecommendFragment())
+                            transaction.replace(R.id.frameMain, RecommendFragment()).commit()
+                            return true
                         }
                         R.id.bookmark -> {
-                            transaction.replace(R.id.frameMain, BookmarkFragment())
+                            transaction.replace(R.id.frameMain, BookmarkFragment()).commit()
+                            return true
                         }
-                        else -> {
-                            transaction.replace(R.id.frameMain, SignInFragment())
+                        else -> { // MyPage
+                            val currentUser = FirebaseService.auth.currentUser
+                            currentUser?.let {
+                                transaction.replace(R.id.frameMain, MyPageFragment()).commit()
+                                return true
+                            }
+
+                            transaction.replace(R.id.frameMain, SignInFragment()).commit()
+                            return true
                         }
                     }
-                    transaction.commit()
 
-                    return item.isChecked
+                    return false
                 }
             }
         )
+    }
+
+    fun replaceFragment(fragment : Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.frameMain, fragment).commit()
     }
 
     override fun onBackPressed() {
