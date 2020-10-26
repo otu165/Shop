@@ -7,69 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".feature.main.MainActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:fillViewport="true"
-        android:orientation="vertical"
+    <FrameLayout
+        android:id="@+id/frameMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintMain1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPagerMain"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/viewMain"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray"
-                android:layout_margin="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/constraintMain1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-
-            <GridView
-                android:id="@+id/gridViewMain"
-                android:layout_width="match_parent"
-                android:layout_height="700dp"
-                android:numColumns="2"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="?attr/actionBarSize"
-                app:layout_constraintTop_toBottomOf="@id/viewMain"/>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-            <include
-                layout="@layout/bottom_navigation_bar_main"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <include
+            layout="@layout/bottom_navigation_bar_main"/>
+    </LinearLayout>
 
 
 

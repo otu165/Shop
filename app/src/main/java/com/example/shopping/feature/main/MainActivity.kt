@@ -8,7 +8,11 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.data.main.MainGridViewData
+import com.example.shopping.feature.bookmark.BookmarkFragment
+import com.example.shopping.feature.login.SignInFragment
+import com.example.shopping.feature.main.fragment.MainFragment
 import com.example.shopping.feature.menu.MenuActivity
+import com.example.shopping.feature.recommend.RecommendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,46 +31,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mainFunction() {
-        // 1. ViewPager
-        val viewPagerAdapter = MainViewPagerAdapter(this)
-        viewPagerMain.adapter = viewPagerAdapter
+        // add MainFragment
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.frameMain, MainFragment()).commit()
 
-        // 2. GridView
-        // ERROR 충분한 높이를 지정해주지 않으면 전체가 출력되지 않는 문제
-        val gridViewAdapter = MainGridViewAdapter(this)
-        gridViewMain.adapter = gridViewAdapter
-
-        // GridView click event
-        gridViewMain.setOnItemClickListener { adapterView, view, position, l ->
-            // TODO position 에 따라, intent 후 tab 강조를 줄 것
-            val intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
-
-        }
-
-        // BottomNavigationBar
+        //  BottomNavigationBar
         bottomNavi.setOnNavigationItemSelectedListener(
             object : BottomNavigationView.OnNavigationItemSelectedListener {
                 override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                    val transaction = supportFragmentManager.beginTransaction()
 
                     when(item.itemId) {
                         R.id.main -> {
-
+                            transaction.replace(R.id.frameMain, MainFragment())
                         }
                         R.id.recommend -> {
-
+                            transaction.replace(R.id.frameMain, RecommendFragment())
                         }
                         R.id.bookmark -> {
-
+                            transaction.replace(R.id.frameMain, BookmarkFragment())
                         }
                         else -> {
-
+                            transaction.replace(R.id.frameMain, SignInFragment())
                         }
                     }
-
-                    if (item.title.toString() == "추천") {
-                        Toast.makeText(this@MainActivity, "추천!", Toast.LENGTH_SHORT).show()
-                    }
+                    transaction.commit()
 
                     return item.isChecked
                 }
