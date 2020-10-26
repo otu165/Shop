@@ -1,4 +1,4 @@
-package com.example.shopping.feature.main.fragment
+package com.example.shopping.feature.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +10,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 import androidx.viewpager.widget.ViewPager
 import com.example.shopping.R
-import com.example.shopping.feature.main.MainGridViewAdapter
-import com.example.shopping.feature.main.MainViewPagerAdapter
 import com.example.shopping.feature.menu.MenuActivity
-import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
 

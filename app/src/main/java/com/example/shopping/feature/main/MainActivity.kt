@@ -1,22 +1,16 @@
 package com.example.shopping.feature.main
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.shopping.R
-import com.example.shopping.data.main.MainGridViewData
 import com.example.shopping.feature.bookmark.BookmarkFragment
 import com.example.shopping.feature.login.SignInFragment
-import com.example.shopping.feature.main.fragment.MainFragment
-import com.example.shopping.feature.menu.MenuActivity
 import com.example.shopping.feature.recommend.RecommendFragment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_navigation_bar_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -59,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
                     return item.isChecked
                 }
-
             }
         )
     }
