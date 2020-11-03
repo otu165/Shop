@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
@@ -13,7 +14,6 @@ import com.example.shopping.feature.main.MainActivity
 import com.google.firebase.ktx.Firebase
 
 class MyPageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,9 @@ class MyPageFragment : Fragment() {
     }
 
     private fun myPageFunction(view : View) {
-        val btnSignOut : Button = view.findViewById(R.id.btnFragMyPageSignOut)
+        // 1. 사용자의 Firebase 데이터 가져오기
+        
+        val btnSignOut : TextView = view.findViewById(R.id.txtFragMyPageSignOut)
 
         btnSignOut.setOnClickListener {
             FirebaseService.auth.signOut()

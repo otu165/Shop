@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.GridView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.shopping.R
 import com.example.shopping.feature.menu.MenuActivity
+import kotlinx.android.synthetic.main.fragment_main.view.*
 
 class MainFragment : Fragment() {
 
@@ -32,17 +35,11 @@ class MainFragment : Fragment() {
         val vpAdapter = MainViewPagerAdapter(requireContext())
         view.findViewById<ViewPager>(R.id.viewPagerMain).adapter = vpAdapter
 
-        // 2. GridView
-        // ERROR 충분한 높이를 지정해주지 않으면 전체가 출력되지 않는 문제
-        val gridView = view.findViewById<GridView>(R.id.gridViewMain)
-        val gvAdapter = MainGridViewAdapter(requireContext())
-        gridView.adapter = gvAdapter
-
-        gridView.setOnItemClickListener { adapterView, view, i, l ->
-            // TODO 선택된 아이템 name 정보 넘기기
-            val intent = Intent(requireContext(), MenuActivity::class.java)
-            startActivity(intent)
-        }
+        // 2. RecyclerView
+        val rvAdapter = MainRvAdapter(requireContext())
+        view.rvMain.adapter = rvAdapter
+        view.rvMain.layoutManager = GridLayoutManager(requireContext(), 2)
+        rvAdapter.notifyDataSetChanged()
     }
 
     companion object {

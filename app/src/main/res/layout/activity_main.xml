@@ -14,14 +14,13 @@
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <include
-            layout="@layout/bottom_navigation_bar_main"/>
-    </LinearLayout>
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_bar_main_menu"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 

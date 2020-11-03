@@ -24,7 +24,7 @@ object Service {
         return listOf<MainGridViewData>(
             MainGridViewData(R.drawable.jacket_m, "아우터"),
             MainGridViewData(R.drawable.top_m, "상의"),
-            MainGridViewData(R.drawable.dress_m, "원피스/세트"),
+            MainGridViewData(R.drawable.dress_m, "원피스"),
             MainGridViewData(R.drawable.jeans_m, "바지"),
             MainGridViewData(R.drawable.skirt_m, "스커트"),
             MainGridViewData(R.drawable.shoes_m, "슈즈"),
@@ -36,7 +36,7 @@ object Service {
         return listOf(
                 MenuTabLayoutData(R.drawable.menu_tab_outer_selecter, "아우터"),
                 MenuTabLayoutData(R.drawable.menu_tab_top_selecter, "상의"),
-                MenuTabLayoutData(R.drawable.menu_tab_dress_selecter, "원피스/세트"),
+                MenuTabLayoutData(R.drawable.menu_tab_dress_selecter, "원피스"),
                 MenuTabLayoutData(R.drawable.menu_tab_jeans_selecter, "바지"),
                 MenuTabLayoutData(R.drawable.menu_tab_skirt_selecter, "스커트"),
                 MenuTabLayoutData(R.drawable.menu_tab_shoes_selecter, "슈즈"),
@@ -58,7 +58,7 @@ object Service {
                     list.add(MenuFragListViewData(R.drawable.top, "${sort}$i", (200 + i).toString() + "원"))
                 }
             }
-            "원피스/세트" -> {
+            "원피스" -> {
                 for (i in 0..18) {
                     list.add(MenuFragListViewData(R.drawable.dress, "${sort}$i", (300 + i).toString() + "원"))
                 }

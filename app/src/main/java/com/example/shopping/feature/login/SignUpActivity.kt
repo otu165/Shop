@@ -36,6 +36,8 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "모든 항목을 입력하세요.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // google sign up button click event
     }
 
     private fun isValid(id : String?, pwd : String?, nick : String?) : Boolean {
