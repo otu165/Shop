@@ -7,16 +7,18 @@
 
     <TextView
         android:id="@+id/txtRvFragRecItem"
-        android:text="추천 아우터"
-        android:textSize="20dp"
+        android:text="# Winter clothes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.viewpager.widget.ViewPager
+    <ImageView
         android:id="@+id/vpRvFragRecItem"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
         android:layout_margin="10dp"/>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.shopping.api
 
 import android.util.Log
 import com.example.shopping.R
+import com.example.shopping.data.RecRvData
 import com.example.shopping.data.main.MainGridViewData
 import com.example.shopping.data.main.MainRvData
 import com.example.shopping.data.menu.MenuFragListViewData
@@ -10,19 +11,18 @@ import java.util.*
 
 // TODO 서버에서 받아오는 데이터로 변환
 object Service {
-    // ERROR 해상도 깨짐, 큰 사이즈의 이미지로 교체
     fun getMainViewPagerData() : List<Int> {
         return listOf(
-                R.drawable.store_1,
-                R.drawable.store_2,
-                R.drawable.store_3,
-                R.drawable.store_4,
-                R.drawable.store_5,
+                R.drawable.main_vp_1,
+                R.drawable.main_vp_2,
+                R.drawable.main_vp_3,
+                R.drawable.main_vp_4,
+                R.drawable.main_vp_5,
         )
     }
 
     fun getMainGridViewData() : List<MainGridViewData> {
-        return listOf<MainGridViewData>(
+        return listOf(
             MainGridViewData(R.drawable.jacket_m, "Outer"),
             MainGridViewData(R.drawable.top_m, "Top"),
             MainGridViewData(R.drawable.dress_m, "Dress"),
@@ -35,11 +35,11 @@ object Service {
 
     fun getMainRvData() : List<MainRvData> {
         return listOf(
-            MainRvData(R.drawable.jacket, "jacket", "description for jacket"),
-            MainRvData(R.drawable.jacket, "jacket2", "description for jacket2"),
-            MainRvData(R.drawable.jacket, "jacket3", "description for jacket3"),
-            MainRvData(R.drawable.jacket, "jacket", "description for jacket"),
-            MainRvData(R.drawable.jacket, "jacket", "description for jacket"),
+            MainRvData(R.drawable.main_rec_1, "Outer", "black leather jacket"),
+            MainRvData(R.drawable.main_rec_3, "Top", "light blue top"),
+            MainRvData(R.drawable.main_rec_4, "Outer", "hood zip-up"),
+            MainRvData(R.drawable.main_rec_2, "Top", "basic long sleeve t-shirt"),
+            MainRvData(R.drawable.main_rec_5, "Dress", "green silk dress"),
             )
     }
 
@@ -108,19 +108,11 @@ object Service {
                 )
     }
 
-    fun getRecVpData() : List<Int> {
+    fun getRecRvData() : List<RecRvData> {
         return listOf(
-            R.drawable.jacket_m,
-            R.drawable.jecket_c,
-            R.drawable.jacket
-        )
-    }
-
-    fun getRecRvData() : List<String> {
-        return listOf(
-            "아우터",
-            "상의",
-            "바지"
+            RecRvData("Winter Clothes", R.drawable.main_vp_1),
+            RecRvData("Season Off 30 ~ 40% Sale", R.drawable.main_vp_2),
+            RecRvData("Cashmere Muffler", R.drawable.main_vp_3),
         )
     }
 }

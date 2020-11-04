@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.example.shopping.R
 import com.example.shopping.api.Service
 
@@ -31,7 +32,7 @@ class MainViewPagerAdapter(private val context : Context) : PagerAdapter() {
 
         // image setting
         val imageView : ImageView = view.findViewById(R.id.imgItemMainViewPager)
-        imageView.setImageResource(image[position])
+        Glide.with(context).load(image[position]).into(imageView)
 
         // viewPager setting
         val viewPager = container as ViewPager
