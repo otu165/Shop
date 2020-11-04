@@ -33,7 +33,7 @@ class MyPageFragment : Fragment() {
 
         btnSignOut.setOnClickListener {
             FirebaseService.auth.signOut()
-            Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "success sign out", Toast.LENGTH_SHORT).show()
             (activity as MainActivity).replaceFragment(SignInFragment())
         }
     }

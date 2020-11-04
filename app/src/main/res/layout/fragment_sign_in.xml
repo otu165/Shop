@@ -8,36 +8,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".feature.login.SignInFragment">
 
-    <EditText
-        android:id="@+id/edtSignInFragId"
-        android:hint="E-MAIL"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFragSignInEmail"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
+        app:boxBackgroundColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.4"/>
+        app:layout_constraintVertical_bias="0.4"
+        android:hint="E-MAIL"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true">
 
-    <EditText
-        android:id="@+id/edtSignInPwd"
-        android:hint="PASSWORD"
-        android:layout_width="250dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSignInFragId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFragSignInPwd"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/edtSignInFragId"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tilFragSignInEmail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="15dp"
-        android:paddingLeft="20dp"/>
+        app:passwordToggleEnabled="true"
+        android:layout_width="250dp"
+        android:hint="PASSWORD">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSignInPwd"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txtSignInFragSignUp"
-        android:text="회원가입"
+        android:text="sign up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtSignInPwd"
+        app:layout_constraintTop_toBottomOf="@id/tilFragSignInPwd"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="30dp"
@@ -45,7 +62,7 @@
 
     <Button
         android:id="@+id/btnSignInFrag"
-        android:text="로그인"
+        android:text="sign in"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

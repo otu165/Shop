@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val toast : Toast = Toast.makeText(this, "\'뒤로\'버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT)
+        val toast : Toast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT)
 
         if(System.currentTimeMillis() > backKeyPressed + 2000) {
             backKeyPressed = System.currentTimeMillis()

@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/txtMainFrag"
-            android:text="Shop With Me"
+            android:text="Shop With Us"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textStyle="bold"
             android:textColor="@color/black"

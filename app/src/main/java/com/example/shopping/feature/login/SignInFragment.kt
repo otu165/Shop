@@ -16,11 +16,13 @@ import com.example.shopping.api.FirebaseService
 import com.example.shopping.api.FirebaseService.auth
 import com.example.shopping.feature.main.MainActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
 class SignInFragment : Fragment() {
-    private lateinit var edtEmail : EditText
-    private lateinit var edtPwd : EditText
+    private lateinit var edtEmail : TextInputEditText
+    private lateinit var edtPwd : TextInputEditText
     private lateinit var txtSignUp : TextView
     private lateinit var btnSignIn : Button
 
@@ -54,17 +56,17 @@ class SignInFragment : Fragment() {
                         if(task.isSuccessful) {
                             // 로그인 성공
                             val user = auth.currentUser
-                            Toast.makeText(requireContext(), "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
                             (activity as MainActivity).replaceFragment(MyPageFragment())
                         }
                         else {
                             // 로그인 실패
-                            Toast.makeText(requireContext(), "아이디 또는 비밀번호가 틀립니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "wrong e-mail or password", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
             else {
-                Toast.makeText(requireContext(), "모든 항목을 입력하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "please fill all item", Toast.LENGTH_SHORT).show()
             }
         }
     }

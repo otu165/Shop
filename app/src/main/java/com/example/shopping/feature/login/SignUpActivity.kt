@@ -2,6 +2,9 @@ package com.example.shopping.feature.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
@@ -24,16 +27,22 @@ class SignUpActivity : AppCompatActivity() {
                 FirebaseService.auth.createUserWithEmailAndPassword(edtSignUpId.text.toString(), edtSignUpPwd.text.toString())
                     .addOnCompleteListener(this) {task ->
                         if(task.isSuccessful) {
-                            Toast.makeText(this, "회원가입 완료", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "sign up success", Toast.LENGTH_SHORT).show()
                             this.finish()
                         }
                         else {
-                            Toast.makeText(this, "올바른 형식의\n이메일과 비밀번호를 입력하세요", Toast.LENGTH_SHORT).show()
+                            val toast : Toast = Toast.makeText(this, "please input\nvalid e-mail and password", Toast.LENGTH_SHORT)
+                            val layout : LinearLayout = toast.view as LinearLayout
+
+                            if(layout.childCount > 0)
+                                (layout.getChildAt(0) as TextView).gravity = Gravity.CENTER
+
+                            toast.show()
                         }
                     }
             }
             else {
-                Toast.makeText(this, "모든 항목을 입력하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "please fill all item", Toast.LENGTH_SHORT).show()
             }
         }
 
