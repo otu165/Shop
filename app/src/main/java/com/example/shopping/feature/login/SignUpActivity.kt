@@ -28,7 +28,7 @@ class SignUpActivity : AppCompatActivity() {
                             this.finish()
                         }
                         else {
-                            Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "올바른 형식의\n이메일과 비밀번호를 입력하세요", Toast.LENGTH_SHORT).show()
                         }
                     }
             }

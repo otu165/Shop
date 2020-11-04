@@ -1,4 +1,4 @@
-package com.example.shopping.feature.main
+package com.example.shopping.feature.main.catogory
 
 import android.content.Context
 import android.view.LayoutInflater

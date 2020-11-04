@@ -47,8 +47,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // firebase
     implementation platform('com.google.firebase:firebase-bom:25.12.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-
     implementation 'com.google.firebase:firebase-auth-ktx:19.4.0'
+
+    // auto_scroll_view_pager
+    compile 'me.angeldevil:AutoScrollViewPager:1.0.8'
+
+    // view_pager_indicator
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+
+    // snap helper
+    implementation 'com.github.rubensousa:gravitysnaphelper:2.2.1'
 }

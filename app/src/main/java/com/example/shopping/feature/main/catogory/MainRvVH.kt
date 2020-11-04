@@ -1,4 +1,4 @@
-package com.example.shopping.feature.main
+package com.example.shopping.feature.main.catogory
 
 import android.content.Intent
 import android.view.View
@@ -18,6 +18,7 @@ class MainRvVH(view : View) : RecyclerView.ViewHolder(view) {
     fun bind(data : MainGridViewData) {
         image.setImageResource(data.resource)
         text.text = data.name
+
 
         // click event
         view.setOnClickListener {

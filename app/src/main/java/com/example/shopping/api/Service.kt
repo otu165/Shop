@@ -3,6 +3,7 @@ package com.example.shopping.api
 import android.util.Log
 import com.example.shopping.R
 import com.example.shopping.data.main.MainGridViewData
+import com.example.shopping.data.main.MainRvData
 import com.example.shopping.data.menu.MenuFragListViewData
 import com.example.shopping.data.menu.MenuTabLayoutData
 import java.util.*
@@ -22,14 +23,24 @@ object Service {
 
     fun getMainGridViewData() : List<MainGridViewData> {
         return listOf<MainGridViewData>(
-            MainGridViewData(R.drawable.jacket_m, "아우터"),
-            MainGridViewData(R.drawable.top_m, "상의"),
-            MainGridViewData(R.drawable.dress_m, "원피스"),
-            MainGridViewData(R.drawable.jeans_m, "바지"),
-            MainGridViewData(R.drawable.skirt_m, "스커트"),
-            MainGridViewData(R.drawable.shoes_m, "슈즈"),
-            MainGridViewData(R.drawable.bag_m, "가방"),
+            MainGridViewData(R.drawable.jacket_m, "Outer"),
+            MainGridViewData(R.drawable.top_m, "Top"),
+            MainGridViewData(R.drawable.dress_m, "Dress"),
+            MainGridViewData(R.drawable.jeans_m, "Pants"),
+            MainGridViewData(R.drawable.skirt_m, "Skirt"),
+            MainGridViewData(R.drawable.shoes_m, "Shoes"),
+            MainGridViewData(R.drawable.bag_m, "Bag")
         )
+    }
+
+    fun getMainRvData() : List<MainRvData> {
+        return listOf(
+            MainRvData(R.drawable.jacket, "jacket", "description for jacket"),
+            MainRvData(R.drawable.jacket, "jacket2", "description for jacket2"),
+            MainRvData(R.drawable.jacket, "jacket3", "description for jacket3"),
+            MainRvData(R.drawable.jacket, "jacket", "description for jacket"),
+            MainRvData(R.drawable.jacket, "jacket", "description for jacket"),
+            )
     }
 
     fun getMenuTabData() : List<MenuTabLayoutData> {
