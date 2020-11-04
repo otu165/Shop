@@ -9,11 +9,14 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutMenu"
         app:tabMode="scrollable"
+        app:tabIndicatorColor="@color/icon_color_selecter"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="83dp"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.viewpager.widget.ViewPager
+        android:overScrollMode="never"
         android:id="@+id/viewPagerMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

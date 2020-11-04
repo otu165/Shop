@@ -21,7 +21,7 @@ class BookmarkFragment : Fragment() {
     }
 
     private fun bookmarkFragFunction(view: View?) {
-
+        // depending on user's bookmark, decide to show or not to show description
     }
 
 }

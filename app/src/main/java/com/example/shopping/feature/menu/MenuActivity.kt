@@ -24,8 +24,6 @@ class MenuActivity : AppCompatActivity() {
 
     private fun menuFunction() {
         // 1. TabLayout
-        // ERROR tab 너비 줄여야 함
-        // ERROR tab icon selecter 동작하지 않음
         for (list in Service.getMenuTabData()) {
             tabLayoutMenu.addTab(tabLayoutMenu.newTab().setCustomView(getTabView(list)))
         }

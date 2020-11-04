@@ -60,7 +60,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:text="# category"
+            android:text="# What We Have"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
@@ -79,7 +79,7 @@
             android:layout_marginRight="16dp"/>
 
         <TextView
-            android:text="# Recent Hot Item"
+            android:text="# Today's Hot Item"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textStyle="bold"
             android:layout_marginTop="30dp"

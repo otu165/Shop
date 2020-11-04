@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.shopping.R
 import com.example.shopping.data.main.MainGridViewData
 import com.example.shopping.feature.menu.MenuActivity
@@ -16,7 +17,7 @@ class MainRvVH(view : View) : RecyclerView.ViewHolder(view) {
     val text : TextView = view.findViewById(R.id.txtItemMainGridViewName)
 
     fun bind(data : MainGridViewData) {
-        image.setImageResource(data.resource)
+        Glide.with(view).load(data.resource).override(600, 600).fitCenter().into(image)
         text.text = data.name
 
 

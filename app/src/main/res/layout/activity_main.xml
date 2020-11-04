@@ -19,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/icon_color_selecter"
+        app:itemTextColor="@color/icon_color_selecter"
         app:menu="@menu/bottom_navigation_bar_main_menu"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
