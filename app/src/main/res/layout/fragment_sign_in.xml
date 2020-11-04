@@ -60,6 +60,8 @@
         android:layout_marginTop="30dp"
         android:clickable="true"/>
 
+
+<!--  ERROR background 설정이 왜 안먹죠 당황스럽네?  -->
     <Button
         android:id="@+id/btnSignInFrag"
         android:text="sign in"

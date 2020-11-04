@@ -19,49 +19,49 @@ class MenuFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPager
             0 -> {
                 MenuOuterFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "아우터")
+                        putString("KEY", "Coat")
                     }
                 }
             }
             1 -> {
                 MenuTopFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "상의")
+                        putString("KEY", "Top")
                     }
                 }
             }
             2 -> {
                 MenuDressFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "원피스/세트")
+                        putString("KEY", "Dress")
                     }
                 }
             }
             3 -> {
                 MenuJeansFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "바지")
+                        putString("KEY", "Pants")
                     }
                 }
             }
             4 -> {
                 MenuSkirtFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "스커트")
+                        putString("KEY", "Skirt")
                     }
                 }
             }
             5 -> {
                 MenuShoesFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "슈즈")
+                        putString("KEY", "Shoes")
                     }
                 }
             }
             else -> {
                 MenuBagFragment().apply {
                     arguments = Bundle().apply {
-                        putString("KEY", "가방")
+                        putString("KEY", "Bag")
                     }
                 }
             }

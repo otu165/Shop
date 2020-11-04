@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,7 +17,7 @@
 
         <TextView
             android:id="@+id/txtMainFrag"
-            android:text="Shop With Us"
+            android:text="Shopping With Us"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -94,9 +95,7 @@
             android:overScrollMode="never"
             android:nestedScrollingEnabled="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

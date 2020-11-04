@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.menu.fragment.MenuDressFragment">
+    tools:context=".feature.menu.fragment.MenuDressFragment"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:layout_marginTop="8dp">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lvMenuDressFrag"
         android:overScrollMode="never"
         android:layout_width="match_parent"

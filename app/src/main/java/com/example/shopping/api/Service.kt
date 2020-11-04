@@ -65,37 +65,37 @@ object Service {
         when(sort) {
             "Coat" -> {
                 for (i in 0..9) {
-                    list.add(MenuFragListViewData(R.drawable.jacket, "${sort}$i", (100 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.jacket, "${sort}$i", "DESCRIPTION", (100 + i).toString() + "원"))
                 }
             }
             "Top" -> {
                 for (i in 0..13) {
-                    list.add(MenuFragListViewData(R.drawable.top, "${sort}$i", (200 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.top, "${sort}$i", "DESCRIPTION",(200 + i).toString() + "원"))
                 }
             }
             "Dress" -> {
                 for (i in 0..18) {
-                    list.add(MenuFragListViewData(R.drawable.dress, "${sort}$i", (300 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.dress, "${sort}$i", "DESCRIPTION",(300 + i).toString() + "원"))
                 }
             }
             "Pants" -> {
                 for (i in 0..3) {
-                    list.add(MenuFragListViewData(R.drawable.jeans, "${sort}$i", (400 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.jeans, "${sort}$i", "DESCRIPTION",(400 + i).toString() + "원"))
                 }
             }
             "Skirt" -> {
                 for (i in 0..20) {
-                    list.add(MenuFragListViewData(R.drawable.skirt_list, "${sort}$i", (500 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.skirt_list, "${sort}$i", "DESCRIPTION",(500 + i).toString() + "원"))
                 }
             }
             "Shoes" -> {
                 for (i in 0..5) {
-                    list.add(MenuFragListViewData(R.drawable.shoes, "${sort}$i", (600 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.shoes, "${sort}$i", "DESCRIPTION",(600 + i).toString() + "원"))
                 }
             }
             else -> { // Bag
                 for (i in 0..5) {
-                    list.add(MenuFragListViewData(R.drawable.bag, "${sort}$i", (700 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.bag, "${sort}$i", "DESCRIPTION",(700 + i).toString() + "원"))
                 }
             }
         }

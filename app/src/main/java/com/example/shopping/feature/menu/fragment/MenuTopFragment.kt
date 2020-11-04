@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shopping.R
 import kotlinx.android.synthetic.main.fragment_menu_skirt.*
 import kotlinx.android.synthetic.main.fragment_menu_skirt.lvMenuSkirtFrag
+import kotlinx.android.synthetic.main.fragment_menu_skirt.view.*
 import kotlinx.android.synthetic.main.fragment_menu_top.*
 import kotlinx.android.synthetic.main.fragment_menu_top.view.*
 
@@ -27,9 +29,15 @@ class MenuTopFragment : Fragment() {
     }
 
     private fun menuTopFunction(view : View) {
-        // 1. ListView
-        val listAdapter = MenuFragListViewAdapter(requireContext(), arguments?.getString("KEY")!!)
-        view.lvMenuTopFrag.adapter = listAdapter
+        // 1. RecyclerView
+        val rvAdapter = MenuFragRvAdapter(requireContext(), arguments?.getString("KEY")!!)
+        view.lvMenuTopFrag.adapter = rvAdapter
+        view.lvMenuTopFrag.layoutManager = GridLayoutManager(requireContext(), 2)
+        rvAdapter.notifyDataSetChanged()
+
+        // add spaces
+        val spaceDecoration = VerticalSpaceItemDecoration(4, 4, 4, 4)
+        view.lvMenuTopFrag.addItemDecoration(spaceDecoration)
     }
 
     companion object {
