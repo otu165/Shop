@@ -103,6 +103,51 @@ object Service {
         return list
     }
 
+    fun getBestItem(sort : String) : List<MenuFragListViewData> {
+        var list = mutableListOf<MenuFragListViewData>()
+
+        when(sort) {
+            "Coat" -> {
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.jacket, "${sort}$i", "INFORMATION", (100 + i).toString() + "원"))
+                }
+            }
+            "Top" -> {
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.top, "${sort}$i", "INFORMATION",(200 + i).toString() + "원"))
+                }
+            }
+            "Dress" -> {
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.dress, "${sort}$i", "INFORMATION",(300 + i).toString() + "원"))
+                }
+            }
+            "Pants" -> {
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.jeans, "${sort}$i", "INFORMATION",(400 + i).toString() + "원"))
+                }
+            }
+            "Skirt" -> {
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.skirt_list, "${sort}$i", "INFORMATION",(500 + i).toString() + "원"))
+                }
+            }
+            "Shoes" -> {
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.shoes, "${sort}$i", "INFORMATION",(600 + i).toString() + "원"))
+                }
+            }
+            else -> { // Bag
+                for (i in 1..4) {
+                    list.add(MenuFragListViewData(R.drawable.bag, "${sort}$i", "INFORMATION",(700 + i).toString() + "원"))
+                }
+            }
+        }
+
+        return list
+
+    }
+
     fun getStoreVpData() : List<Int> {
         return listOf(
                 R.drawable.jacket,

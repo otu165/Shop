@@ -10,7 +10,7 @@ import com.example.shopping.api.Service
 class MenuFragRvAdapter(private val context : Context,
                         sort : String) : RecyclerView.Adapter<MenuFragRvVH>() {
 
-    private var data = Service.getMenuFragListViewData(sort)
+    var data = Service.getMenuFragListViewData(sort)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuFragRvVH {
         val view = LayoutInflater.from(context).inflate(R.layout.item_frag_menu, null)
