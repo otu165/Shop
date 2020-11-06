@@ -3,15 +3,17 @@ package com.example.shopping.feature.store
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
+import com.example.shopping.data.ReviewData
+import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_review.*
 
 class ReviewActivity : AppCompatActivity() {
     var rating : String = "0" // TODO 별점 최저 0.5점으로 설정
     var nickname : String = ""
+    var dataSize : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,8 @@ class ReviewActivity : AppCompatActivity() {
     }
 
     private fun reviewFunction() {
+        getReviewListSize()
+
         // setRate
         rbReview.setOnRatingBarChangeListener { ratingBar, fl, b ->
             rating = fl.toString()
@@ -47,16 +51,27 @@ class ReviewActivity : AppCompatActivity() {
         }
     }
 
+    private fun getReviewListSize() {
+        FirebaseService.db.collection("review")
+            .document("outer")
+            .get()
+            .addOnSuccessListener { it->
+                if(it.data == null)
+                    dataSize = 0
+                else
+                    dataSize = it.data?.size !!
+            }
+    }
+
     private fun writeReview() {
 
-        val data = hashMapOf(
-            "nickname" to nickname,
-            "rating" to rating,
-            "review" to edtReview.text.toString()
-        )
+//        val data = RealReviewData(hashMapOf(dataSize.toString() to ReviewData(nickname, rating, edtReview.text.toString())))
+
+        val data = hashMapOf(dataSize.toString() to ReviewData(nickname, rating, edtReview.text.toString()))
 
         FirebaseService.db.collection("review")
-            .add(data)
+            .document("outer")
+            .set(data, SetOptions.merge())
             .addOnSuccessListener {
                 setResult(Activity.RESULT_OK)
                 this.finish()

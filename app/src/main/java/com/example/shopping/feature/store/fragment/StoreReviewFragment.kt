@@ -2,7 +2,6 @@ package com.example.shopping.feature.store.fragment
 
 import android.app.Activity
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
@@ -73,9 +71,18 @@ class StoreReviewFragment : Fragment() {
             .addOnSuccessListener { it ->
                 list.clear()
 
-                for (data in it) {
-                    list.add(ReviewData(data.get("nickname").toString(), data.get("rating").toString(), data.get("review").toString()))
+                var index : Int = 0
+                for(data in it.documents) {
+                    val hashMap : HashMap<String, ReviewData> = data.data as HashMap<String, ReviewData>
+
+                    for(key in hashMap.keys.toList()) {
+
+                        val hash = data.get(key) as HashMap<String, String>
+                        list.add(ReviewData(hash["nickname"]!!, hash["rating"]!!, hash["review"]!!))
+
+                    }
                 }
+
                 rvAdapter.data = list
                 rvAdapter.notifyDataSetChanged()
 
