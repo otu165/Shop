@@ -50,13 +50,13 @@ object Service {
 
     fun getMenuTabData() : List<MenuTabLayoutData> {
         return listOf(
-                MenuTabLayoutData(R.drawable.menu_tab_outer_selecter, "Coat"),
-                MenuTabLayoutData(R.drawable.menu_tab_top_selecter, "Top"),
-                MenuTabLayoutData(R.drawable.menu_tab_dress_selecter, "Dress"),
-                MenuTabLayoutData(R.drawable.menu_tab_jeans_selecter, "Pants"),
-                MenuTabLayoutData(R.drawable.menu_tab_skirt_selecter, "Skirt"),
-                MenuTabLayoutData(R.drawable.menu_tab_shoes_selecter, "Shoes"),
-                MenuTabLayoutData(R.drawable.menu_tab_bag_selecter, "Bag"),
+                MenuTabLayoutData(R.drawable.jacket_b, "Coat"),
+                MenuTabLayoutData(R.drawable.top_b, "Top"),
+                MenuTabLayoutData(R.drawable.dress_b, "Dress"),
+                MenuTabLayoutData(R.drawable.jeans_b, "Pants"),
+                MenuTabLayoutData(R.drawable.skirt_b, "Skirt"),
+                MenuTabLayoutData(R.drawable.shoes_b, "Shoes"),
+                MenuTabLayoutData(R.drawable.bag, "Bag"),
                 )
     }
 
@@ -147,15 +147,6 @@ object Service {
 
         return list
 
-    }
-
-    fun getStoreVpData() : List<Int> {
-        return listOf(
-                R.drawable.jacket,
-                R.drawable.jacket_b,
-                R.drawable.jacket_m,
-                R.drawable.jecket_c
-                )
     }
 
     fun getRecRvData() : List<RecRvData> {

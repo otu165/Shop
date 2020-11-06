@@ -23,16 +23,17 @@
         app:layout_constraintRight_toRightOf="@id/imgFragReview"
         android:layout_marginTop="10dp"/>
 
-    <!-- ERROR 사용자의 클릭으로 별점이 변함 -->
     <RatingBar
         android:id="@+id/rbFragReview"
+        android:isIndicator="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/imgFragReview"
         app:layout_constraintBottom_toBottomOf="@id/imgFragReview"
         app:layout_constraintLeft_toRightOf="@id/imgFragReview"
         android:layout_marginLeft="10dp"
-        app:layout_constraintVertical_bias="0.2"/>
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/Widget.AppCompat.RatingBar.Small"/>
 
     <TextView
         android:id="@+id/tvFragReview"
