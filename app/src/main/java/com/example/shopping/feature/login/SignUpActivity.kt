@@ -62,8 +62,6 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     }
 
-
-
             }
             else {
                 Toast.makeText(this, "please fill all items", Toast.LENGTH_SHORT).show()

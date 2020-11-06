@@ -1,5 +1,6 @@
 package com.example.shopping.feature.login
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
 import com.example.shopping.feature.main.MainActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_my_page.view.*
 
@@ -44,5 +46,37 @@ class MyPageFragment : Fragment() {
             Toast.makeText(requireContext(), "success sign out", Toast.LENGTH_SHORT).show()
             (activity as MainActivity).replaceFragment(SignInFragment())
         }
+
+        // 2. 이미지 변경
+
+        // 3. 배송
+        view.cvFragMyPageDelivery.setOnClickListener {
+            Toast.makeText(view.context, "Sorry, not available now", Toast.LENGTH_SHORT).show()
+        }
+
+        // 4. 회원탈퇴
+        view.cvFragMyPageRemove.setOnClickListener {
+            MaterialAlertDialogBuilder(view.context)
+                    .setTitle("Remove Account")
+                    .setMessage("do you really want to remove your account?\nyou can't restore it")
+                    .setNegativeButton("CANCEL") { dialogInterface: DialogInterface, i: Int -> // CANCEL
+
+                    }
+                    .setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int -> // OK
+
+                        FirebaseService.auth.currentUser!!.delete().addOnSuccessListener {
+                            // 로그아웃 처리
+                            FirebaseService.auth.signOut()
+
+                            // fragment 교체
+                            (activity as MainActivity).replaceFragment(SignInFragment())
+                        }
+                        Toast.makeText(view.context, "completely remove account", Toast.LENGTH_SHORT).show()
+                    }
+                    .show()
+
+
+        }
+
     }
 }
