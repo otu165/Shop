@@ -12,6 +12,7 @@ import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
 import com.example.shopping.feature.main.MainActivity
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_my_page.view.*
 
 class MyPageFragment : Fragment() {
 
@@ -28,11 +29,18 @@ class MyPageFragment : Fragment() {
 
     private fun myPageFunction(view : View) {
         // 1. 사용자의 Firebase 데이터 가져오기
-        
-        val btnSignOut : TextView = view.findViewById(R.id.txtFragMyPageSignOut)
 
-        btnSignOut.setOnClickListener {
-            FirebaseService.auth.signOut()
+        val docRef = FirebaseService.db.collection("user")
+            .document(FirebaseService.auth.currentUser?.uid.toString())
+
+        docRef.get()
+            .addOnSuccessListener { it ->
+                view.txtMyPageNick.text = it.get("nickname").toString()
+            }
+        
+
+        view.txtFragMyPageSignOut.setOnClickListener {
+            FirebaseService.auth?.signOut()
             Toast.makeText(requireContext(), "success sign out", Toast.LENGTH_SHORT).show()
             (activity as MainActivity).replaceFragment(SignInFragment())
         }

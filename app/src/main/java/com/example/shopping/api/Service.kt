@@ -3,6 +3,7 @@ package com.example.shopping.api
 import android.util.Log
 import com.example.shopping.R
 import com.example.shopping.data.RecRvData
+import com.example.shopping.data.ReviewData
 import com.example.shopping.data.main.MainGridViewData
 import com.example.shopping.data.main.MainRvData
 import com.example.shopping.data.menu.MenuFragListViewData

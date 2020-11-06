@@ -1,18 +1,18 @@
-package com.example.shopping.feature.menu.fragment
+package com.example.shopping.feature.menu.fragment.outer
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.SnapHelper
 import com.example.shopping.R
+import com.example.shopping.feature.menu.fragment.MenuFragBestRvAdapter
+import com.example.shopping.feature.menu.fragment.MenuFragRvAdapter
+import com.example.shopping.feature.menu.fragment.VerticalSpaceItemDecoration
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import kotlinx.android.synthetic.main.fragment_menu_outer.view.*
 
@@ -27,7 +27,7 @@ class MenuOuterFragment : Fragment() {
         val view : View =  inflater.inflate(R.layout.fragment_menu_outer, container, false)
         menuOuterFunction(view)
 
-        Log.d(TAG, "${TAG} created")
+        Log.d(TAG, "$TAG created")
         return view
     }
 

@@ -5,5 +5,4 @@ data class MenuFragListViewData (
     val name : String,
     val info : String,
     val cost : String
-
 )

@@ -1,5 +1,7 @@
 package com.example.shopping.feature.login
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -37,6 +39,7 @@ class SignInFragment : Fragment() {
         return view
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun signInFunction(view : View) {
         // 1. 뷰 초기화
         initiateView(view)
@@ -44,7 +47,7 @@ class SignInFragment : Fragment() {
         // 2. SignUp request click event
         txtSignUp.setOnClickListener {
             val intent = Intent(requireContext(), SignUpActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE)
         }
 
         // 3. SignIn request click event
@@ -58,6 +61,7 @@ class SignInFragment : Fragment() {
                             val user = auth.currentUser
                             Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
                             (activity as MainActivity).replaceFragment(MyPageFragment())
+
                         }
                         else {
                             // 로그인 실패
@@ -67,6 +71,20 @@ class SignInFragment : Fragment() {
             }
             else {
                 Toast.makeText(requireContext(), "please fill all item", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnSignIn.setBackgroundColor(R.color.black)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when(requestCode) {
+            REQUEST_CODE -> {
+                when(resultCode) {
+                    Activity.RESULT_OK -> {
+                        (activity as MainActivity).replaceFragment(MyPageFragment())
+                    }
+                }
             }
         }
     }
@@ -87,6 +105,7 @@ class SignInFragment : Fragment() {
     }
 
     companion object {
+        private const val REQUEST_CODE = 1000
         private const val TAG = "SignInFragment"
     }
 }

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopping">
-        <activity android:name=".feature.login.SignUpActivity"></activity>
+        <activity android:name=".feature.store.ReviewActivity"></activity>
+        <activity android:name=".feature.login.SignUpActivity" />
         <activity android:name=".feature.store.StoreActivity" />
         <activity android:name=".feature.menu.MenuActivity" />
         <activity android:name=".feature.main.MainActivity">

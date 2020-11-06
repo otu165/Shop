@@ -14,6 +14,7 @@ import com.example.shopping.feature.login.SignInFragment
 import com.example.shopping.feature.recommend.RecommendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun mainFunction() {
         // initiate Firebase
         FirebaseService.auth = Firebase.auth
+        FirebaseService.db = FirebaseFirestore.getInstance()
 
         // add MainFragment
         val transaction = supportFragmentManager.beginTransaction()
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         else -> { // MyPage
                             val currentUser = FirebaseService.auth.currentUser
+
                             currentUser?.let {
                                 transaction.replace(R.id.frameMain, MyPageFragment()).commit()
                                 return true

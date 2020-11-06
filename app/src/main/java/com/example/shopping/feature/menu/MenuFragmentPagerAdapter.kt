@@ -1,13 +1,11 @@
 package com.example.shopping.feature.menu
 
-import android.content.Context
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.shopping.feature.menu.fragment.*
+import com.example.shopping.feature.menu.fragment.outer.MenuOuterFragment
 
 class MenuFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     override fun getCount(): Int {

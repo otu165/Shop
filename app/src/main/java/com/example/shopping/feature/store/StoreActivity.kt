@@ -3,6 +3,7 @@ package com.example.shopping.feature.store
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.example.shopping.R
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_store.*
@@ -17,15 +18,13 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun storeFunction() {
-        // 1. ViewPager
-        val vpAdapter = StoreVpAdapter(this)
-        vpStore.adapter = vpAdapter
 
-        // 2. title & description update
+        // 1. title & description update
 
-        // 3. Fragment + ViewPager
+        // 2. Fragment + ViewPager
         val fragmentPagerAdapter = StoreFragmentPagerAdapter(supportFragmentManager)
         vpStoreBelow.adapter = fragmentPagerAdapter
+        vpStoreBelow.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabStore))
 
         tabStore.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
@@ -42,8 +41,10 @@ class StoreActivity : AppCompatActivity() {
                 }
             }
         )
+    }
 
-        vpStoreBelow.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabStore))
+    fun replaceFragment(fragment : Fragment) {
+
     }
 
     companion object {
