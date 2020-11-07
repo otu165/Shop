@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
@@ -13,12 +14,14 @@ import com.example.shopping.feature.login.MyPageFragment
 import com.example.shopping.feature.login.SignInFragment
 import com.example.shopping.feature.recommend.RecommendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var backKeyPressed : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +36,14 @@ class MainActivity : AppCompatActivity() {
         // initiate Firebase
         FirebaseService.auth = Firebase.auth
         FirebaseService.db = FirebaseFirestore.getInstance()
+        FirebaseService.storage = FirebaseStorage.getInstance()
+
+        // setting toolbar
+        setSupportActionBar(tbMain) // 툴바를 액티비티의 actionbar 로 지정
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // drawer 꺼낼 홈 버튼 활성화
+
+        // navigation view listener 지정
+        nvMain.setNavigationItemSelectedListener(this)
 
         // add MainFragment
         val transaction = supportFragmentManager.beginTransaction()
@@ -80,7 +91,28 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.frameMain, fragment).commit()
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.coat -> {
+                Toast.makeText(this, "코트", Toast.LENGTH_SHORT).show()
+            }
+            R.id.top -> {
+                Toast.makeText(this, "상의", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                Toast.makeText(this, "etc", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return false
+    }
+
     override fun onBackPressed() {
+        // drawer 열린 상태에서의 backPressed 처리
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawers()
+            return
+        }
+
         val toast : Toast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT)
 
         if(System.currentTimeMillis() > backKeyPressed + 2000) {
@@ -90,6 +122,16 @@ class MainActivity : AppCompatActivity() {
             this.finish()
             toast.cancel()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> { // 메뉴 버튼
+                drawerLayout.openDrawer(GravityCompat.START) // drawer 열기
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

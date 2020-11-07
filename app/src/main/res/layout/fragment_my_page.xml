@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgMyPageUser"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/txtFragMyPageSignOut"
-                android:text="로그아웃"
+                android:text="sign out"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         android:layout_marginTop="8dp">
 
         <TextView
-            android:text="배송"
+            android:text="delivery"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:gravity="left|center_horizontal|center_vertical"
             android:layout_marginLeft="15dp"
@@ -104,7 +104,7 @@
 
         <TextView
 
-            android:text="회원탈퇴"
+            android:text="remove account"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:gravity="left|center_horizontal|center_vertical"
             android:layout_marginLeft="15dp"

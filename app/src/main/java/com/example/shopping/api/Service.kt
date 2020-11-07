@@ -66,7 +66,7 @@ object Service {
         when(sort) {
             "Coat" -> {
                 for (i in 0..9) {
-                    list.add(MenuFragListViewData(R.drawable.jacket, "${sort}$i", "DESCRIPTION", (100 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.jacket_icon, "${sort}$i", "DESCRIPTION", (100 + i).toString() + "원"))
                 }
             }
             "Top" -> {
@@ -110,7 +110,7 @@ object Service {
         when(sort) {
             "Coat" -> {
                 for (i in 1..4) {
-                    list.add(MenuFragListViewData(R.drawable.jacket, "${sort}$i", "INFORMATION", (100 + i).toString() + "원"))
+                    list.add(MenuFragListViewData(R.drawable.jacket_icon, "${sort}$i", "INFORMATION", (100 + i).toString() + "원"))
                 }
             }
             "Top" -> {

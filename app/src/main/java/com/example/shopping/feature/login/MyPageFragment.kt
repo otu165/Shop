@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
 import com.example.shopping.feature.main.MainActivity
@@ -65,6 +66,7 @@ class MyPageFragment : Fragment() {
                     .setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int -> // OK
 
                         FirebaseService.auth.currentUser!!.delete().addOnSuccessListener {
+
                             // 로그아웃 처리
                             FirebaseService.auth.signOut()
 
@@ -76,6 +78,15 @@ class MyPageFragment : Fragment() {
                     .show()
 
 
+        }
+
+        // 이미지 다운로드 방법
+        view.imgMyPageUser.setOnClickListener {
+            val ref = FirebaseService.storage.getReference("images/flower_1.png")
+
+            ref.downloadUrl.addOnSuccessListener {
+                Glide.with(requireContext()).load(it).into(view.imgMyPageUser)
+            }
         }
 
     }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:title="Category">
+
+            <menu>
+
+                <item
+                    android:id="@+id/coat"
+                    android:title="Coat"/>
+
+                <item
+                    android:id="@+id/top"
+                    android:title="Top"/>
+
+                <item
+                    android:id="@+id/dress"
+                    android:title="Dress"/>
+
+                <item
+                    android:id="@+id/pants"
+                    android:title="Pants"/>
+
+                <item
+                    android:id="@+id/skirt"
+                    android:title="Skirt"/>
+
+                <item
+                    android:id="@+id/shoes"
+                    android:title="Shoes"/>
+
+                <item
+                    android:id="@+id/bag"
+                    android:title="Bag"/>
+
+            </menu>
+
+        </item>
+
+        <item
+            android:title="Service">
+
+            <menu>
+                <item
+                    android:id="@+id/center"
+                    android:title="Customer Center"/>
+
+                <item
+                    android:id="@+id/error"
+                    android:title="Report Error"/>
+
+            </menu>
+
+        </item>
+
+
+    </group>
+
+</menu>

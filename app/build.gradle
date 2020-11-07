@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'com.google.firebase:firebase-auth-ktx:19.4.0'
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
+    implementation 'com.google.firebase:firebase-storage-ktx'
 
     // auto_scroll_view_pager
     compile 'me.angeldevil:AutoScrollViewPager:1.0.8'
@@ -72,4 +73,7 @@ dependencies {
 
     // youtube player
     implementation 'kr.co.prnd:youtube-player-view:1.3.0'
+
+    // circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
