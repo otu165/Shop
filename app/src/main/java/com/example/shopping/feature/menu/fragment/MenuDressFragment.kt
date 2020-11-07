@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.shopping.R
 import kotlinx.android.synthetic.main.fragment_menu_bag.view.*
 import kotlinx.android.synthetic.main.fragment_menu_dress.*
@@ -37,6 +39,26 @@ class MenuDressFragment : Fragment() {
         val spaceDecoration = VerticalSpaceItemDecoration(4, 4, 4, 4)
         view.lvMenuDressFrag.addItemDecoration(spaceDecoration)
 
+        view.imgFragDressUp.setOnClickListener {
+            view.lvMenuDressFrag.smoothScrollToPosition(0)
+        }
+
+        view.lvMenuDressFrag.addOnScrollListener(
+                object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        if(dy > 0) {
+                            if(!view.imgFragDressUp.isVisible)
+                                view.imgFragDressUp.visibility = View.VISIBLE
+                        }
+                        else {
+                            if(view.imgFragDressUp.isVisible)
+                                view.imgFragDressUp.visibility = View.INVISIBLE
+                        }
+
+                        super.onScrolled(recyclerView, dx, dy)
+                    }
+                }
+        )
     }
 
     companion object {

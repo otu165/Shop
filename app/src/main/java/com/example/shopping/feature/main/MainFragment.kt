@@ -41,7 +41,7 @@ class MainFragment : Fragment() {
         viewPager.setScrollFactor(3.0) // adjust scroll speed
         viewPager.startAutoScroll(4000)
 
-        // 2. RecyclerView // TODO VH 의 click event 지우고, 카테고리 사이드바로 구현하기
+        // 2. RecyclerView
         val rvAdapter = MainRvAdapter(requireContext())
         view.rvMain.adapter = rvAdapter
         view.rvMain.layoutManager = GridLayoutManager(requireContext(), 2)

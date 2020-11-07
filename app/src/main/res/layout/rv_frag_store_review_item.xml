@@ -29,6 +29,7 @@
         android:isIndicator="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/yellow"
         app:layout_constraintTop_toTopOf="@id/imgFragReview"
         app:layout_constraintBottom_toBottomOf="@id/imgFragReview"
         app:layout_constraintLeft_toRightOf="@id/imgFragReview"

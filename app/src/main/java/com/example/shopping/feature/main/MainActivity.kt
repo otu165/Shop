@@ -1,5 +1,6 @@
 package com.example.shopping.feature.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.shopping.api.FirebaseService
 import com.example.shopping.feature.bookmark.BookmarkFragment
 import com.example.shopping.feature.login.MyPageFragment
 import com.example.shopping.feature.login.SignInFragment
+import com.example.shopping.feature.menu.MenuActivity
 import com.example.shopping.feature.recommend.RecommendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -94,16 +96,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.coat -> {
-                Toast.makeText(this, "코트", Toast.LENGTH_SHORT).show()
+                startMenuActivity(0)
             }
             R.id.top -> {
-                Toast.makeText(this, "상의", Toast.LENGTH_SHORT).show()
+                startMenuActivity(1)
             }
-            else -> {
-                Toast.makeText(this, "etc", Toast.LENGTH_SHORT).show()
+            R.id.dress -> {
+                startMenuActivity(2)
+            }
+            R.id.pants -> {
+                startMenuActivity(3)
+            }
+            R.id.skirt -> {
+                startMenuActivity(4)
+            }
+            R.id.shoes -> {
+                startMenuActivity(5)
+            }
+            R.id.bag -> {
+                startMenuActivity(6)
             }
         }
+
+        drawerLayout.closeDrawers()
         return false
+    }
+
+    fun startMenuActivity(sort : Int) {
+        startActivity(Intent(this, MenuActivity::class.java).putExtra("sort", sort))
     }
 
     override fun onBackPressed() {

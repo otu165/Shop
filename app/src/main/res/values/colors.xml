@@ -11,4 +11,5 @@
     <color name="gray">#737373</color>
     <color name="light_gray">#BABABA</color>
     <color name="img_background">#DDDDDD</color>
+    <color name="yellow">#FFC107</color>
 </resources>

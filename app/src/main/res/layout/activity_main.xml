@@ -50,7 +50,7 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvMain"
         android:fitsSystemWindows="true"
-        android:layout_width="365dp"
+        android:layout_width="335dp"
         android:layout_height="match_parent"
         app:menu="@menu/navigation_drawer_item"
         app:headerLayout="@layout/header"

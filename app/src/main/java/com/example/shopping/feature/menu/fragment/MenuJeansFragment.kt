@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.shopping.R
+import kotlinx.android.synthetic.main.fragment_menu_bag.view.*
 import kotlinx.android.synthetic.main.fragment_menu_dress.*
 import kotlinx.android.synthetic.main.fragment_menu_dress.view.*
 import kotlinx.android.synthetic.main.fragment_menu_jeans.*
@@ -36,6 +39,27 @@ class MenuJeansFragment : Fragment() {
         // add spaces
         val spaceDecoration = VerticalSpaceItemDecoration(4, 4, 4, 4)
         view.lvMenuJeansFrag.addItemDecoration(spaceDecoration)
+
+        view.imgFragJeansUp.setOnClickListener {
+            view.lvMenuJeansFrag.smoothScrollToPosition(0)
+        }
+
+        view.lvMenuJeansFrag.addOnScrollListener(
+                object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        if(dy > 0) {
+                            if(!view.imgFragJeansUp.isVisible)
+                                view.imgFragJeansUp.visibility = View.VISIBLE
+                        }
+                        else {
+                            if(view.imgFragJeansUp.isVisible)
+                                view.imgFragJeansUp.visibility = View.INVISIBLE
+                        }
+
+                        super.onScrolled(recyclerView, dx, dy)
+                    }
+                }
+        )
     }
 
     companion object {
