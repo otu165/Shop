@@ -1,6 +1,7 @@
 package com.example.shopping.feature.main
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -120,6 +121,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.bag -> {
                 startMenuActivity(6)
+            }
+            R.id.center -> { // 전화
+                var intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:1372"))
+
+                if(intent.resolveActivity(packageManager) != null)
+                    startActivity(intent)
+            }
+            R.id.error -> { // 메일(EXTRA_EMAIL : 받는이, EXTRA_SUBJECT : 제목, EXTRA_TEXT : 내용)
+                var intent = Intent(Intent.ACTION_SENDTO)
+                intent.data = Uri.parse("mailto:${getString(R.string.email)}")
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Error reports on Application, Wanna Shop")
+
+                if(intent.resolveActivity(packageManager) != null)
+                    startActivity(intent)
             }
         }
 
