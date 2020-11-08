@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -13,6 +16,7 @@ import com.example.shopping.api.FirebaseService
 import com.example.shopping.feature.bookmark.BookmarkFragment
 import com.example.shopping.feature.login.MyPageFragment
 import com.example.shopping.feature.login.SignInFragment
+import com.example.shopping.feature.main.search.SearchFragment
 import com.example.shopping.feature.menu.MenuActivity
 import com.example.shopping.feature.recommend.RecommendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,6 +29,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var backKeyPressed : Long = 0
+    lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,10 +131,51 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         startActivity(Intent(this, MenuActivity::class.java).putExtra("sort", sort))
     }
 
+    // action bar menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_icon, menu)
+
+        val search = menu?.findItem(R.id.search)
+        searchView = search?.actionView as SearchView
+        searchView.maxWidth = Integer.MAX_VALUE // 검색창 길이 커스텀, title 안보이게 됨
+
+        searchView.queryHint = "Search here .."
+        searchView.setOnSearchClickListener(
+                object : View.OnClickListener {
+                    override fun onClick(p0: View?) {
+                        // fragment 교체하기
+                        supportFragmentManager.beginTransaction().replace(R.id.frameMain, SearchFragment()).addToBackStack("search").commit()
+                    }
+
+                }
+        )
+
+        searchView.setOnQueryTextListener(
+                object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(p0: String?): Boolean {
+                        Log.d(TAG, "user input : $p0")
+                        return false
+                    }
+
+                    override fun onQueryTextChange(p0: String?): Boolean {
+                        return true
+                    }
+                }
+        )
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onBackPressed() {
         // drawer 열린 상태에서의 backPressed 처리
         if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawers()
+            return
+        }
+
+        // searchView 열린 상태에서의 backPressed 처리
+        if(!searchView.isIconified) {
+            searchView.onActionViewCollapsed()
             return
         }
 

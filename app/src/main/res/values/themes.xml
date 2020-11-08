@@ -21,4 +21,9 @@
         <item name="windowNoTitle">true</item>
 
     </style>
+
+    <style name="FullscreenDialogTheme" parent="Theme.AppCompat.DialogWhenLarge">
+        <item name="windowNoTitle">false</item>
+        <item name="android:windowAnimationStyle">@style/Theme.AppCompat.Light.Dialog</item>
+    </style>
 </resources>

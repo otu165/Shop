@@ -149,6 +149,16 @@ object Service {
 
     }
 
+    fun getSearchData() : List<String> {
+        var list = mutableListOf<String>()
+
+        for (i in 1..10) {
+            list.add(i.toString())
+        }
+
+        return list
+    }
+
     fun getRecRvData() : List<RecRvData> {
         return listOf(
             RecRvData("Winter Clothes", R.drawable.main_vp_1),
