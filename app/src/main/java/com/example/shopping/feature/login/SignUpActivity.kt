@@ -68,8 +68,8 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        btnSignUp.setBackgroundColor(R.color.black)
-        btnSignUpGoogle.setBackgroundColor(R.color.black)
+//        btnSignUp.setBackgroundColor(R.color.black)
+//        btnSignUpGoogle.setBackgroundColor(R.color.black)
 
         // google sign up button click event
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

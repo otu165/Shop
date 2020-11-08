@@ -3,6 +3,7 @@ package com.example.shopping.feature.store
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.shopping.R
 import com.google.android.material.tabs.TabLayout
@@ -41,10 +42,26 @@ class StoreActivity : AppCompatActivity() {
                 }
             }
         )
-    }
 
-    fun replaceFragment(fragment : Fragment) {
+        // 3. bookmark
+        ctvStoreBookmark.setOnClickListener {
 
+            if(ctvStoreBookmark.isChecked) { // 추가된 상태 -> 제거
+                // TODO DB에서 제거
+                ctvStoreBookmark.toggle()
+                Toast.makeText(this, "제거", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                // TODO DB에 추가
+                ctvStoreBookmark.toggle()
+                Toast.makeText(this, "추가", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // 4. purchase
+        btnStoreBuy.setOnClickListener {
+            Toast.makeText(this, "Sorry, not available now", Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

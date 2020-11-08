@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -134,7 +135,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Error reports on Application, Wanna Shop")
 
                 if(intent.resolveActivity(packageManager) != null)
-                    startActivity(intent)
+                    startActivityForResult(intent, EMAIL_REQUEST_CODE)
             }
         }
 
@@ -142,7 +143,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return false
     }
 
-    fun startMenuActivity(sort : Int) {
+    private fun startMenuActivity(sort : Int) {
         startActivity(Intent(this, MenuActivity::class.java).putExtra("sort", sort))
     }
 
@@ -181,6 +182,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode) {
+            EMAIL_REQUEST_CODE -> {
+                val toast = Toast.makeText(this@MainActivity, "Success Error Report", Toast.LENGTH_SHORT)
+                toast.setGravity(Gravity.BOTTOM, 0, 0)
+                toast.show()
+            }
+        }
+    }
+
     override fun onBackPressed() {
         // drawer 열린 상태에서의 backPressed 처리
         if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -191,6 +204,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // searchView 열린 상태에서의 backPressed 처리
         if(!searchView.isIconified) {
             searchView.onActionViewCollapsed()
+            supportFragmentManager.beginTransaction().replace(R.id.frameMain, MainFragment()).commit()
             return
         }
 
@@ -216,6 +230,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     companion object {
+        private const val EMAIL_REQUEST_CODE = 1000
         private const val TAG = "MainActivity"
     }
 }

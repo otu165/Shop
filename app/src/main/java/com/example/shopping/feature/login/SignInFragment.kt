@@ -74,7 +74,7 @@ class SignInFragment : Fragment() {
             }
         }
 
-        btnSignIn.setBackgroundColor(R.color.black)
+//        btnSignIn.setBackgroundColor(R.color.black)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

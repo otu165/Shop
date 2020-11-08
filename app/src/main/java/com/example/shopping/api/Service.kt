@@ -152,7 +152,7 @@ object Service {
     fun getSearchData() : List<String> {
         var list = mutableListOf<String>()
 
-        for (i in 1..10) {
+        for (i in 1..30) {
             list.add(i.toString())
         }
 

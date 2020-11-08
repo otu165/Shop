@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context=".feature.store.StoreActivity"
-    android:fillViewport="true">
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/constraintStore1"
@@ -37,35 +43,61 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"/>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabStore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Caution" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Review" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpStoreBelow"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Detail" />
+                app:layout_constraintTop_toBottomOf="@id/tabStore"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Caution" />
+        </LinearLayout>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Review" />
+    </androidx.core.widget.NestedScrollView>
 
-        </com.google.android.material.tabs.TabLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <!-- ERROR match parent 안먹음 -->
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vpStoreBelow"
+        <CheckedTextView
+            android:id="@+id/ctvStoreBookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:checkMark="@drawable/bookmark_selecter"
+            android:checked="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/btnStoreBuy"
+            android:text="PURCHASE"
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tabStore"/>
+            android:layout_marginRight="16dp"/>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>
