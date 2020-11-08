@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopping.R
+import com.example.shopping.api.FirebaseService
+import com.example.shopping.data.ReviewData
+import com.example.shopping.data.menu.MenuFragListViewData
 import com.example.shopping.feature.menu.fragment.MenuFragBestRvAdapter
 import com.example.shopping.feature.menu.fragment.MenuFragRvAdapter
 import com.example.shopping.feature.menu.fragment.VerticalSpaceItemDecoration
@@ -45,6 +48,8 @@ class MenuOuterFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun menuOuterFunction(view: View) {
+        // 1. Firebase Coat 데이터 받아오기
+
         // 1. RecyclerView (best seller)
         val adapter = MenuFragBestRvAdapter(requireContext(), arguments?.getString("KEY")!!)
         view.rvFragOuter.adapter = adapter
@@ -61,7 +66,6 @@ class MenuOuterFragment : Fragment() {
         adapter.notifyDataSetChanged()
 
         // 2. RecyclerView (all item)
-
         val rvAdapter = MenuFragRvAdapter(requireContext(), arguments?.getString("KEY")!!)
         view.lvMenuOuterFrag.adapter = rvAdapter
         view.lvMenuOuterFrag.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -91,27 +95,6 @@ class MenuOuterFragment : Fragment() {
         view.imgFragOuterUp.setOnClickListener {
             view.svFragOuter.fullScroll(ScrollView.FOCUS_UP)
         }
-
-//        view.lvMenuOuterFrag.addOnScrollListener(
-//                object : RecyclerView.OnScrollListener() {
-//                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                        if(dy > 0) { // 아래로 스크롤
-//                            floatingActionButton.hide()
-//                            Log.d("TAG", "야 이거 되냐? 왜안돼는데")
-//                        }
-//                        else {
-//                            floatingActionButton.show()
-//                            Log.d("TAG", "이건되냐?")
-//                        }
-//
-//                        super.onScrolled(recyclerView, dx, dy)
-//                    }
-//                }
-//        )
-    }
-
-    fun goUp() {
-        recyclerView.smoothScrollToPosition(0)
     }
 
     companion object {

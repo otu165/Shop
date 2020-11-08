@@ -2,13 +2,17 @@ package com.example.shopping.feature.login
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -21,12 +25,14 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_sign_in.*
+import kotlinx.android.synthetic.main.fragment_sign_in.view.*
 
 class SignInFragment : Fragment() {
     private lateinit var edtEmail : TextInputEditText
     private lateinit var edtPwd : TextInputEditText
     private lateinit var txtSignUp : TextView
     private lateinit var btnSignIn : Button
+    private lateinit var imm : InputMethodManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -43,6 +49,11 @@ class SignInFragment : Fragment() {
     private fun signInFunction(view : View) {
         // 1. 뷰 초기화
         initiateView(view)
+        handleEnter()
+
+        view.signInFrag.setOnClickListener {
+            hideKeyboard()
+        }
 
         // 2. SignUp request click event
         txtSignUp.setOnClickListener {
@@ -52,6 +63,8 @@ class SignInFragment : Fragment() {
 
         // 3. SignIn request click event
         btnSignIn.setOnClickListener {
+            hideKeyboard()
+
             if(isValid(edtEmail.text.toString(), edtPwd.text.toString())) {
                 // TODO 데이터베이스 연동
                 auth.signInWithEmailAndPassword(edtEmail.text.toString(), edtPwd.text.toString())
@@ -73,8 +86,24 @@ class SignInFragment : Fragment() {
                 Toast.makeText(requireContext(), "please fill all item", Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
-//        btnSignIn.setBackgroundColor(R.color.black)
+    private fun handleEnter() {
+        edtEmail.setOnKeyListener { view, i, keyEvent ->
+            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+                edtPwd.requestFocus()
+            }
+
+            true
+        }
+
+        edtPwd.setOnKeyListener { view, i, keyEvent ->
+            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+                hideKeyboard()
+            }
+
+            true
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -98,10 +127,13 @@ class SignInFragment : Fragment() {
         edtPwd = view.findViewById(R.id.edtSignInPwd)
         txtSignUp = view.findViewById(R.id.txtSignInFragSignUp)
         btnSignIn = view.findViewById(R.id.btnSignInFrag)
+
+        imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
-    fun getInstance() : SignInFragment {
-        return SignInFragment()
+    private fun hideKeyboard() {
+        imm.hideSoftInputFromWindow(edtEmail.windowToken, 0)
+        imm.hideSoftInputFromWindow(edtPwd.windowToken, 0)
     }
 
     companion object {

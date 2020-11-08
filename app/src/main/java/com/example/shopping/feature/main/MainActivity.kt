@@ -1,14 +1,17 @@
 package com.example.shopping.feature.main
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
@@ -32,6 +35,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var backKeyPressed : Long = 0
     lateinit var searchView: SearchView
+    lateinit var imm : InputMethodManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         FirebaseService.auth = Firebase.auth
         FirebaseService.db = FirebaseFirestore.getInstance()
         FirebaseService.storage = FirebaseStorage.getInstance()
+        imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         // setting toolbar
         setSupportActionBar(tbMain) // 툴바를 액티비티의 actionbar 로 지정
@@ -147,6 +152,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         startActivity(Intent(this, MenuActivity::class.java).putExtra("sort", sort))
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> { // 메뉴 버튼
+                if(searchView.isIconified) // SearchView 미사용
+                    drawerLayout.openDrawer(GravityCompat.START) // drawer 열기
+                else { // SearchView 사용중
+                    replaceFragment(MainFragment())
+                    finishSearchView()
+                }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     // action bar menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_icon, menu)
@@ -182,6 +202,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return super.onCreateOptionsMenu(menu)
     }
 
+    fun finishSearchView() {
+        searchView.onActionViewCollapsed()
+        imm.hideSoftInputFromWindow(searchView.windowToken, 0)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -189,7 +214,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             EMAIL_REQUEST_CODE -> {
                 val toast = Toast.makeText(this@MainActivity, "Success Error Report", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.BOTTOM, 0, 0)
-                toast.show()
+                // ERROR 사용자가 메일을 보냈을 때만 토스트를 띄워야 함
+//                toast.show()
             }
         }
     }
@@ -217,16 +243,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             this.finish()
             toast.cancel()
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> { // 메뉴 버튼
-                drawerLayout.openDrawer(GravityCompat.START) // drawer 열기
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 
     companion object {

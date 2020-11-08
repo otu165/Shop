@@ -3,6 +3,7 @@ package com.example.shopping.feature.store
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.shopping.R
 import com.example.shopping.api.FirebaseService
@@ -11,6 +12,8 @@ import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_review.*
 
 class ReviewActivity : AppCompatActivity() {
+    lateinit var name : String // 아이템 이름
+
     var rating : String = "0" // TODO 별점 최저 0.5점으로 설정
     var nickname : String = ""
     var dataSize : Int = 0
@@ -23,6 +26,10 @@ class ReviewActivity : AppCompatActivity() {
     }
 
     private fun reviewFunction() {
+        if(intent.hasExtra("name"))
+            name = intent.getStringExtra("name")
+        Log.d("TAG", "name : $name")
+
         getReviewListSize()
 
         // setRate
@@ -53,7 +60,7 @@ class ReviewActivity : AppCompatActivity() {
 
     private fun getReviewListSize() {
         FirebaseService.db.collection("review")
-            .document("outer")
+            .document(name)
             .get()
             .addOnSuccessListener { it->
                 if(it.data == null)
@@ -65,12 +72,10 @@ class ReviewActivity : AppCompatActivity() {
 
     private fun writeReview() {
 
-//        val data = RealReviewData(hashMapOf(dataSize.toString() to ReviewData(nickname, rating, edtReview.text.toString())))
-
         val data = hashMapOf(dataSize.toString() to ReviewData(nickname, rating, edtReview.text.toString()))
 
         FirebaseService.db.collection("review")
-            .document("outer")
+            .document(name)
             .set(data, SetOptions.merge())
             .addOnSuccessListener {
                 setResult(Activity.RESULT_OK)

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shopping.R
 import com.example.shopping.data.menu.MenuFragListViewData
+import com.example.shopping.feature.menu.fragment.outer.SelectedMenu
 import com.example.shopping.feature.store.StoreActivity
 import kotlinx.android.synthetic.main.fragment_menu_outer.view.*
 
@@ -25,10 +26,12 @@ class MenuFragRvVH(view : View) : RecyclerView.ViewHolder(view) {
         info.text = data.info
         cost.text = data.cost
 
+        val item = SelectedMenu(data.name, data.info, data.cost, data.imageResource.toString())
+
         // click event
         view.setOnClickListener {
-            // TODO 선택한 아이템 정보 넘기기
             val intent = Intent(view.context, StoreActivity::class.java)
+                .putExtra("item", item)
             view.context.startActivity(intent)
         }
     }

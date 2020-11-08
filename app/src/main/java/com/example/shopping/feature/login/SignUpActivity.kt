@@ -2,11 +2,16 @@ package com.example.shopping.feature.login
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.Gravity
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
-
+    lateinit var imm : InputMethodManager
     private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +41,13 @@ class SignUpActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     private fun signUpFunction() {
+        imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        handleEnter()
+
+        signUpActivity.setOnClickListener {
+            hideKeyboard()
+        }
+
         // SignUp button click event
         btnSignUp.setOnClickListener {
             if(isValid(edtSignUpId.text.toString(), edtSignUpPwd.text.toString(), edtSignUpNickname.text.toString())) {
@@ -68,8 +80,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-//        btnSignUp.setBackgroundColor(R.color.black)
-//        btnSignUpGoogle.setBackgroundColor(R.color.black)
 
         // google sign up button click event
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -83,6 +93,40 @@ class SignUpActivity : AppCompatActivity() {
         btnSignUpGoogle.setOnClickListener {
             Toast.makeText(this, "Sorry, not available now", Toast.LENGTH_SHORT).show()
 //            signIn()
+        }
+    }
+
+    private fun handleEnter() {
+        edtSignUpId.setOnKeyListener { view, i, keyEvent ->
+            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+                edtSignUpPwd.requestFocus()
+            }
+
+            true
+        }
+
+        edtSignUpPwd.setOnKeyListener { view, i, keyEvent ->
+            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+                edtSignUpNickname.requestFocus()
+            }
+
+            true
+        }
+
+        edtSignUpNickname.setOnKeyListener { view, i, keyEvent ->
+            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+                edtSignUpAddress.requestFocus()
+            }
+
+            true
+        }
+
+        edtSignUpAddress.setOnKeyListener { view, i, keyEvent ->
+            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+                hideKeyboard()
+            }
+
+            true
         }
     }
 
@@ -142,6 +186,13 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun isValid(id : String?, pwd : String?, nick : String?) : Boolean {
         return !id.isNullOrEmpty() && !pwd.isNullOrEmpty() && !nick.isNullOrEmpty()
+    }
+
+    private fun hideKeyboard() {
+        imm.hideSoftInputFromWindow(edtSignUpId.windowToken, 0)
+        imm.hideSoftInputFromWindow(edtSignUpPwd.windowToken, 0)
+        imm.hideSoftInputFromWindow(edtSignUpNickname.windowToken, 0)
+        imm.hideSoftInputFromWindow(edtSignUpAddress.windowToken, 0)
     }
 
     companion object {

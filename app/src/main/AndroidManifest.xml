@@ -15,7 +15,9 @@
         <activity android:name=".feature.login.SignUpActivity" />
         <activity android:name=".feature.store.StoreActivity" />
         <activity android:name=".feature.menu.MenuActivity" />
-        <activity android:name=".feature.main.MainActivity">
+        <activity android:name=".feature.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

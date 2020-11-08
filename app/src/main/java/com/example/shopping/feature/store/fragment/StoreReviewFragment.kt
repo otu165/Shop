@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_store_review.view.*
 
 class StoreReviewFragment : Fragment() {
     lateinit var rvAdapter : StoreReviewRvAdapter
+    lateinit var name : String // 옷 이름
     var list = mutableListOf<ReviewData>()
 
     override fun onCreateView(
@@ -32,6 +33,9 @@ class StoreReviewFragment : Fragment() {
     }
 
     private fun reviewFunction(view : View) {
+        Log.d("TAG", "${arguments?.getString("name")!!}")
+        name = arguments?.getString("name")!!
+
         // 1. RecyclerView
         rvAdapter = StoreReviewRvAdapter(requireContext())
         val recyclerView = view.rvFragStoreReview
@@ -42,7 +46,8 @@ class StoreReviewFragment : Fragment() {
         // 2. button click event
         view.btnFragStore.setOnClickListener {
             FirebaseService.auth.currentUser?.let {
-                startActivityForResult(Intent(requireContext(), ReviewActivity::class.java), REQUEST_CODE)
+                startActivityForResult(Intent(requireContext(), ReviewActivity::class.java)
+                    .putExtra("name", name), REQUEST_CODE)
                 return@setOnClickListener
             }
 
@@ -67,29 +72,23 @@ class StoreReviewFragment : Fragment() {
     }
 
     private fun getReviewData() {
-        FirebaseService.db.collection("review").get()
-            .addOnSuccessListener { it ->
+        FirebaseService.db.collection("review").document(name).get()
+            .addOnSuccessListener {
                 list.clear()
 
-                var index : Int = 0
-                for(data in it.documents) {
-                    val hashMap : HashMap<String, ReviewData> = data.data as HashMap<String, ReviewData>
+                for(data in it.data?.keys!!) {
+                    Log.d("TAG", "${it.get(data)}")
 
-                    for(key in hashMap.keys.toList()) {
-
-                        val hash = data.get(key) as HashMap<String, String>
-                        list.add(ReviewData(hash["nickname"]!!, hash["rating"]!!, hash["review"]!!))
-
-                    }
+                    val hash = it.get(data) as HashMap<String, String>
+                    list.add(ReviewData(hash["nickname"]!!, hash["rating"]!!, hash["review"]!!))
                 }
 
                 rvAdapter.data = list
                 rvAdapter.notifyDataSetChanged()
 
-                // set TextView Visible or Invisible
-                if(list.size != 0) view!!.txtFragStoreReview.visibility = View.GONE
-
-                Log.d("TAG", "review updated")
+                // set TextView Invisible
+                if(list.size != 0)
+                    view!!.txtFragStoreReview.visibility = View.GONE
             }
     }
 

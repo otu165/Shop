@@ -1,5 +1,6 @@
 package com.example.shopping.feature.store
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -7,7 +8,10 @@ import com.example.shopping.feature.store.fragment.StoreAlertFragment
 import com.example.shopping.feature.store.fragment.StoreInfoFragment
 import com.example.shopping.feature.store.fragment.StoreReviewFragment
 
-class StoreFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class StoreFragmentPagerAdapter(fragmentManager: FragmentManager,
+                                val name : String) : FragmentPagerAdapter(fragmentManager) {
+    val data = name
+
     override fun getCount(): Int {
         return 3
     }
@@ -21,7 +25,11 @@ class StoreFragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentPage
                 StoreAlertFragment()
             }
             else -> {
-                StoreReviewFragment()
+                StoreReviewFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("name", data)
+                    }
+                }
             }
         }
     }

@@ -1,10 +1,12 @@
 package com.example.shopping.feature.main.search
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shopping.R
 import com.example.shopping.api.Service
@@ -13,6 +15,7 @@ import com.example.shopping.feature.main.MainFragment
 import kotlinx.android.synthetic.main.fragment_search.view.*
 
 class SearchFragment : Fragment() {
+    lateinit var imm : InputMethodManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,6 +27,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun searchFunction(view : View) {
+        imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
         // TODO Firebase 에서 넘겨주는 데이터로 교체
         val rvAdapter = SearchLvAdapter(requireContext(), Service.getSearchData())
         view.rvFragSearch.adapter = rvAdapter
@@ -32,8 +37,7 @@ class SearchFragment : Fragment() {
 
         // close action
         view.txtFragSearchClose.setOnClickListener {
-            // TODO 키보드 닫기 (signup activity 수정할 때 같이 수정)
-            // TODO searchView 닫기
+            (activity as MainActivity).finishSearchView()
             (activity as MainActivity).replaceFragment(MainFragment())
         }
 

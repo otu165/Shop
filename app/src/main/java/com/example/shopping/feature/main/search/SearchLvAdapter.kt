@@ -25,7 +25,7 @@ class SearchLvAdapter (private val context : Context, private val clothes : List
 
         // click listener
         view.setOnClickListener {
-            Toast.makeText(context, "Sorry, $p0 not available now", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Sorry, ${p0+1} not available now", Toast.LENGTH_SHORT).show()
         }
 
         return view
