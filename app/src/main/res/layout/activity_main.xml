@@ -3,59 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerLayout"
     android:fitsSystemWindows="true"
     tools:context=".feature.main.MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tbMain"
-                app:title="Wanna Shop?"
-                android:background="@color/light_gray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"/>
+                android:background="@color/light_gray"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:title="Wanna Shop?" />
 
-            <FrameLayout
-                android:id="@+id/frameMain"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="?attr/actionBarSize"
-                app:layout_constraintTop_toTopOf="parent"/>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/frameMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelVisibilityMode="labeled"
+            android:layout_gravity="bottom"
             app:itemIconTint="@color/icon_color_selecter"
             app:itemTextColor="@color/icon_color_selecter"
-            app:menu="@menu/bottom_navigation_bar_main_menu"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_navigation_bar_main_menu" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvMain"
-        android:fitsSystemWindows="true"
+        android:overScrollMode="never"
         android:layout_width="335dp"
         android:layout_height="match_parent"
-        app:menu="@menu/navigation_drawer_item"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
-        android:layout_gravity="start">
-        <!-- layout_gravity -->
+        app:menu="@menu/navigation_drawer_item">
 
     </com.google.android.material.navigation.NavigationView>
 
