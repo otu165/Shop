@@ -14,10 +14,10 @@ Android Studio 의 Layout, View, Fragment 의 사용법을 익히고 Firebase �
 ## Screen Shot
 ### 1. main
 <div>
-<img src="https://user-images.githubusercontent.com/55652161/98562423-67dc0c80-22ed-11eb-912b-7356cefb259a.png" width="220">
-<img src="https://user-images.githubusercontent.com/55652161/98562429-6874a300-22ed-11eb-8427-21f57de301b9.png" width="220">
-<img src="https://user-images.githubusercontent.com/55652161/98562434-69a5d000-22ed-11eb-8dd4-d890af14fdab.png" width="220">
-<img src="https://user-images.githubusercontent.com/55652161/98562440-6ad6fd00-22ed-11eb-9cee-e6de0e8e464a.png" width="220">
+<img src="https://user-images.githubusercontent.com/55652161/98562423-67dc0c80-22ed-11eb-912b-7356cefb259a.png" width="200">
+<img src="https://user-images.githubusercontent.com/55652161/98562429-6874a300-22ed-11eb-8427-21f57de301b9.png" width="200">
+<img src="https://user-images.githubusercontent.com/55652161/98562434-69a5d000-22ed-11eb-8dd4-d890af14fdab.png" width="200">
+<img src="https://user-images.githubusercontent.com/55652161/98562440-6ad6fd00-22ed-11eb-9cee-e6de0e8e464a.png" width="200">
 </div>
 
 - Toolbar + Fragment + BottomNavigationView
@@ -54,10 +54,10 @@ Android Studio 의 Layout, View, Fragment 의 사용법을 익히고 Firebase �
 
 ## 시연 영상
 <div>
-<img src="https://user-images.githubusercontent.com/55652161/98565872-788e8180-22f1-11eb-9f1b-ae9630ede007.gif" width="220">
-<img src="https://user-images.githubusercontent.com/55652161/98565882-7c220880-22f1-11eb-8045-4689aed7123b.gif" width="220">
-<img src="https://user-images.githubusercontent.com/55652161/98566350-ffdbf500-22f1-11eb-987c-d1444866e745.gif" width="220">
-<img src="https://user-images.githubusercontent.com/55652161/98565889-7d533580-22f1-11eb-8ac1-7afd3a35c21e.gif" width="220">
+<img src="https://user-images.githubusercontent.com/55652161/98565872-788e8180-22f1-11eb-9f1b-ae9630ede007.gif" width="200">
+<img src="https://user-images.githubusercontent.com/55652161/98565882-7c220880-22f1-11eb-8045-4689aed7123b.gif" width="200">
+<img src="https://user-images.githubusercontent.com/55652161/98566350-ffdbf500-22f1-11eb-987c-d1444866e745.gif" width="200">
+<img src="https://user-images.githubusercontent.com/55652161/98565889-7d533580-22f1-11eb-8ac1-7afd3a35c21e.gif" width="200">
 </div>
 
 - 왼쪽에서부터 순서대로 메인 화면, 북마크, 리뷰 작성, 계정 삭제 기능 시연이다.
