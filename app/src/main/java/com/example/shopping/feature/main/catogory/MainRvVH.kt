@@ -17,7 +17,10 @@ class MainRvVH(view : View) : RecyclerView.ViewHolder(view) {
     val text : TextView = view.findViewById(R.id.txtItemMainGridViewName)
 
     fun bind(data : MainGridViewData) {
-        Glide.with(view).load(data.resource).override(600, 600).fitCenter().into(image)
+        Glide.with(view).load(data.resource)
+            .override(600, 600)
+            .centerCrop()
+            .into(image)
         text.text = data.name
     }
 }

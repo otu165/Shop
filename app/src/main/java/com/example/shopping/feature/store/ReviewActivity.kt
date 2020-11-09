@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_review.*
 
 class ReviewActivity : AppCompatActivity() {
     lateinit var name : String // 아이템 이름
+    var img : Int? = null // 아이템 리소스
 
     var rating : String = "0" // TODO 별점 최저 0.5점으로 설정
     var nickname : String = ""
@@ -28,6 +29,13 @@ class ReviewActivity : AppCompatActivity() {
     private fun reviewFunction() {
         if(intent.hasExtra("name"))
             name = intent.getStringExtra("name")
+
+        if(intent.hasExtra("image"))
+            img = intent.getIntExtra("image", 0)
+
+        txtReview.text = name
+        imgReview.setImageResource(img!!)
+
         Log.d("TAG", "name : $name")
 
         getReviewListSize()

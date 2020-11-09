@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -98,35 +99,43 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun handleEnter() {
         edtSignUpId.setOnKeyListener { view, i, keyEvent ->
-            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+            if(keyEvent.action == KeyEvent.ACTION_UP && i == KEYCODE_ENTER) {
                 edtSignUpPwd.requestFocus()
+
+                return@setOnKeyListener true
             }
 
-            true
+            false
         }
 
         edtSignUpPwd.setOnKeyListener { view, i, keyEvent ->
-            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+            if(keyEvent.action == KeyEvent.ACTION_UP && i == KEYCODE_ENTER) {
                 edtSignUpNickname.requestFocus()
+
+                return@setOnKeyListener true
             }
 
-            true
+            false
         }
 
         edtSignUpNickname.setOnKeyListener { view, i, keyEvent ->
-            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+            if(keyEvent.action == KeyEvent.ACTION_UP && i == KEYCODE_ENTER) {
                 edtSignUpAddress.requestFocus()
+
+                return@setOnKeyListener true
             }
 
-            true
+            false
         }
 
         edtSignUpAddress.setOnKeyListener { view, i, keyEvent ->
-            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+            if(keyEvent.action == KeyEvent.ACTION_UP && i == KEYCODE_ENTER) {
                 hideKeyboard()
+
+                return@setOnKeyListener true
             }
 
-            true
+            false
         }
     }
 

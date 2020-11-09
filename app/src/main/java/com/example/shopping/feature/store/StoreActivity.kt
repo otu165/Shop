@@ -37,7 +37,7 @@ class StoreActivity : AppCompatActivity() {
         imgStore.setImageResource(item.image.toInt())
 
         // 2. Fragment + ViewPager
-        val fragmentPagerAdapter = StoreFragmentPagerAdapter(supportFragmentManager, item.title)
+        val fragmentPagerAdapter = StoreFragmentPagerAdapter(supportFragmentManager, item.title, item.image.toInt())
         vpStoreBelow.adapter = fragmentPagerAdapter
         vpStoreBelow.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabStore))
 
@@ -68,7 +68,7 @@ class StoreActivity : AppCompatActivity() {
                 ctvStoreBookmark.toggle()
                 removeItemFromBookmark()
             }
-            else { // DB 에 추가
+            else {
                 ctvStoreBookmark.toggle()
                 addItemToBookmark()
             }

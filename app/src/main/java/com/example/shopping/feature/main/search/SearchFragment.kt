@@ -33,12 +33,11 @@ class SearchFragment : Fragment() {
         val rvAdapter = SearchLvAdapter(requireContext(), Service.getSearchData())
         view.rvFragSearch.adapter = rvAdapter
 
-        // TODO actionbar home 기능 replaceFragment 로 수정
-
         // close action
         view.txtFragSearchClose.setOnClickListener {
             (activity as MainActivity).finishSearchView()
             (activity as MainActivity).replaceFragment(MainFragment())
+//            activity?.supportFragmentManager?.beginTransaction()?.hide(this)?.commit() // 숨기기
         }
 
     }

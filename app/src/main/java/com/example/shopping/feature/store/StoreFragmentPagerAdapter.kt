@@ -9,7 +9,8 @@ import com.example.shopping.feature.store.fragment.StoreInfoFragment
 import com.example.shopping.feature.store.fragment.StoreReviewFragment
 
 class StoreFragmentPagerAdapter(fragmentManager: FragmentManager,
-                                val name : String) : FragmentPagerAdapter(fragmentManager) {
+                                val name : String,
+                                val image : Int) : FragmentPagerAdapter(fragmentManager) {
     val data = name
 
     override fun getCount(): Int {
@@ -28,6 +29,7 @@ class StoreFragmentPagerAdapter(fragmentManager: FragmentManager,
                 StoreReviewFragment().apply {
                     arguments = Bundle().apply {
                         putString("name", data)
+                        putInt("image", image)
                     }
                 }
             }

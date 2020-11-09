@@ -10,9 +10,6 @@ import com.example.shopping.data.menu.MenuFragListViewData
 import com.example.shopping.data.menu.MenuTabLayoutData
 import java.util.*
 
-// TODO 서버에서 받아오는 데이터로 변환
-// TODO drawable 정리
-
 object Service {
 
     fun getMainViewPagerData() : List<Int> {

@@ -99,12 +99,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         )
+
+
     }
 
     fun replaceFragment(fragment : Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.frameMain, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frameMain, fragment).addToBackStack(null).commit()
     }
 
+    // drawer select listener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.coat -> {
@@ -158,6 +161,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if(searchView.isIconified) // SearchView 미사용
                     drawerLayout.openDrawer(GravityCompat.START) // drawer 열기
                 else { // SearchView 사용중
+                    // ERROR 현재 사용중인 프래그먼트로 넘어가기
                     replaceFragment(MainFragment())
                     finishSearchView()
                 }
@@ -233,6 +237,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             supportFragmentManager.beginTransaction().replace(R.id.frameMain, MainFragment()).commit()
             return
         }
+
+        // BNV 에 부착된 fragment 가 아닌 경우엔 back stack 으로 이동
 
         val toast : Toast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT)
 

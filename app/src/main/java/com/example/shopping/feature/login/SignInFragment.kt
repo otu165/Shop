@@ -90,19 +90,23 @@ class SignInFragment : Fragment() {
 
     private fun handleEnter() {
         edtEmail.setOnKeyListener { view, i, keyEvent ->
-            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+            if(keyEvent.action == KeyEvent.ACTION_UP && i == KEYCODE_ENTER) {
                 edtPwd.requestFocus()
+
+                return@setOnKeyListener true
             }
 
-            true
+            false
         }
 
         edtPwd.setOnKeyListener { view, i, keyEvent ->
-            if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KEYCODE_ENTER) {
+            if(keyEvent.action == KeyEvent.ACTION_UP && i == KEYCODE_ENTER) {
                 hideKeyboard()
+
+                return@setOnKeyListener true
             }
 
-            true
+            false
         }
     }
 

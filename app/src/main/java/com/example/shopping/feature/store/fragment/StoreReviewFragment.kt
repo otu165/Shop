@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_store_review.view.*
 class StoreReviewFragment : Fragment() {
     lateinit var rvAdapter : StoreReviewRvAdapter
     lateinit var name : String // 옷 이름
+    var img : Int? = null // 옷 리소스
     var list = mutableListOf<ReviewData>()
 
     override fun onCreateView(
@@ -35,6 +36,7 @@ class StoreReviewFragment : Fragment() {
     private fun reviewFunction(view : View) {
         Log.d("TAG", "${arguments?.getString("name")!!}")
         name = arguments?.getString("name")!!
+        img = arguments?.getInt("image")!!
 
         // 1. RecyclerView
         rvAdapter = StoreReviewRvAdapter(requireContext())
@@ -46,8 +48,11 @@ class StoreReviewFragment : Fragment() {
         // 2. button click event
         view.btnFragStore.setOnClickListener {
             FirebaseService.auth.currentUser?.let {
-                startActivityForResult(Intent(requireContext(), ReviewActivity::class.java)
-                    .putExtra("name", name), REQUEST_CODE)
+                val intent = Intent(requireContext(), ReviewActivity::class.java)
+                    .putExtra("name", name)
+                    .putExtra("image", img)
+
+                startActivityForResult(intent, REQUEST_CODE)
                 return@setOnClickListener
             }
 
